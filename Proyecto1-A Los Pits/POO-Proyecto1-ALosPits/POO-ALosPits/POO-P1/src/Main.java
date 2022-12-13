@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Marca marca = new Marca();
 
-        marca.add("BMW");
-        //marca.delete("Audi");
+        marca.add("Mercedes Benz", "SUV");
+
+        //marca.delete("Audi", "Sedan");
     }
 }
