@@ -1,11 +1,8 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FileManager {
-//    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
     public static void writeFile(String user, String passw, String path) throws IOException {
         File file = new File(path);
@@ -17,7 +14,19 @@ public class FileManager {
     }
 
     public static Object readFile(String path) {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(path));
 
+            while((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                usuarios.add(new Usuario(values[0], values[1], values[2]));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return usuarios;
     }
 
 }
