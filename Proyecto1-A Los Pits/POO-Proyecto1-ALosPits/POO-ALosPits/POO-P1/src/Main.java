@@ -6,9 +6,9 @@ public class Main {
         Marca marca = new Marca();
         Usuario usuario = new Usuario();
 
-        //marca.add("Mercedes Benz", "SUV");
+        //marca.add("Jeep", "Pickup");
 
-        //marca.delete("Audi", "Sedan");
+        marca.delete("Jeep", "Pickup");
 
         //usuario.add("Fabian", "abc123");
     }
