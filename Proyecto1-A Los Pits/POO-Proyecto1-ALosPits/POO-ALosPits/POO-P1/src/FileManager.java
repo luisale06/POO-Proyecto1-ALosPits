@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileManager {
-    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
     public static void writeFile(String user, String passw, String path) throws IOException {
         File file = new File(path);

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.io.File;
 
-public class BDusuarios {
+/*public class BDusuarios {
     String filepath = "usuarios.csv";
     ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
@@ -40,4 +40,4 @@ public class BDusuarios {
         return false;
     }
 
-}
+}*/
