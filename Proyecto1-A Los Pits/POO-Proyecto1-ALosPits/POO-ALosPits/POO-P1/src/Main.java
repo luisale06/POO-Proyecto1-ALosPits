@@ -6,6 +6,7 @@ public class Main {
         Marca marca = new Marca();
         Modelo modelo = new Modelo();
         Cliente cliente = new Cliente();
+        GUI gui = new GUI();
 
         //Usuario usuario = new Usuario();
 
