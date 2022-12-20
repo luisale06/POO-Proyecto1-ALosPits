@@ -3,10 +3,6 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         new Login();
-        Marca marca = new Marca();
-        Modelo modelo = new Modelo();
-        Cliente cliente = new Cliente();
-        marcaGUI marcagui = new marcaGUI();
         menuGUI menugui = new menuGUI();
 
         //Usuario usuario = new Usuario();

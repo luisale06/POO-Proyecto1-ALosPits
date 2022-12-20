@@ -33,10 +33,13 @@ public class marcaGUI {
     public JButton aceptar_registro_servicio = new JButton();
 
     //ComboBox
-    public String[] tipos_marca_array = {"4x4", "SUV", "Pickup", "Sedan"};
-    public String[] marcas_array;
-    public JComboBox combobox_tipos_marca;
-    public JComboBox combobox_marcas;
+    public String[] tipos_marca_array = {"4x4", "Pickup", "SUV", "Sedan"};
+    public String[] marcas_array = {"Abarth","Alfa Romeo","Aston Martin","Audi","Bentley","BMW","Cadillac","Caterham","Chevrolet","Citroen",
+            "Dacia","Ferrari","Fiat","Ford","Honda","Infiniti","Isuzu","Iveco","Jaguar","Jeep","Kia","KTM","Lada","Lamborghini","Lancia",
+            "Land Rove","Lexus","Lotus","Maserati","Mazda","Mercedes Benz","Mini","Mitsubishi","Morgan","Nissan","Opel","Peugeot","Piaggio",
+            "Porsche","Renault","Rolls Royce","Seat","Skoda","Smart","SsangYong","Subaru","Suzuki","Tata","Tesla","Toyota","Volkswagen","Volvo"};
+    public JComboBox combobox_tipos_marca = new JComboBox(tipos_marca_array);
+    public JComboBox combobox_marcas = new JComboBox(marcas_array);
 
 
     //Control CSVs
@@ -45,8 +48,6 @@ public class marcaGUI {
     Cliente cliente = new Cliente();
 
     marcaGUI() {
-        tipos_marca_array = sortArrays();
-        combobox_tipos_marca = new JComboBox(tipos_marca_array);
 
         //Marcas
         registro_marca.setFont(new Font("", Font.PLAIN, 21));
@@ -67,7 +68,7 @@ public class marcaGUI {
         indicador_tipo_marca.setText("Tipo");
         indicador_tipo_marca.setBounds(275, 80, 40, 20);
 
-        entrada_marca.setBounds(140, 50, 130, 20);
+        combobox_marcas.setBounds(140, 50, 130, 20);
         combobox_tipos_marca.setBounds(140, 80, 130, 20);
 
         aceptar_registro_marca.setFont(new Font("", Font.BOLD, 12));
@@ -80,10 +81,10 @@ public class marcaGUI {
         frame.setLayout(null);
         frame.setBounds(500, 200, 500, 200);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.add(registro_marca);
-        frame.add(entrada_marca);
+        frame.add(combobox_marcas);
         frame.add(combobox_tipos_marca);
         frame.add(aceptar_registro_marca);
         frame.add(eliminar_registro_marca);
@@ -97,28 +98,21 @@ public class marcaGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    marca.add(entrada_marca.getText(), String.valueOf(combobox_tipos_marca.getSelectedItem()));
+                    marca.add(String.valueOf(combobox_marcas.getSelectedItem()), String.valueOf(combobox_tipos_marca.getSelectedItem()));
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
-    }
-
-    public String[] sortArrays() {
-        String[] myArray = tipos_marca_array;
-        int size = myArray.length;
-
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = i + 1; j < myArray.length; j++) {
-                if (myArray[i].compareTo(myArray[j]) > 0) {
-                    String temp = myArray[i];
-                    myArray[i] = myArray[j];
-                    myArray[j] = temp;
+        eliminar_registro_marca.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    marca.delete(String.valueOf(combobox_marcas.getSelectedItem()), String.valueOf(combobox_tipos_marca.getSelectedItem()));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
-        }
-        System.out.println(Arrays.toString(myArray));
-        return myArray;
+        });
     }
 }
