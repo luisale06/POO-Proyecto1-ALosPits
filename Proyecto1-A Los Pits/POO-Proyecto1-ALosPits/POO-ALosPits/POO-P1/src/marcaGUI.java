@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class GUI {
+public class marcaGUI {
     //Frame
-    private JFrame frame = new JFrame("A los Pits");
+    private JFrame frame = new JFrame("Registro de Marcas");
 
     //Labels
     static JLabel registro_marca = new JLabel();
@@ -15,6 +15,8 @@ public class GUI {
     static JLabel registro_cliente = new JLabel();
     static JLabel registro_vehiculo_cliente = new JLabel();
     static JLabel registro_servicio = new JLabel();
+    static JLabel indicador_marca = new JLabel();
+    static JLabel indicador_tipo_marca = new JLabel();
 
     //TextField
     static JTextField entrada_marca = new JTextField();
@@ -42,26 +44,41 @@ public class GUI {
     Modelo modelo = new Modelo();
     Cliente cliente = new Cliente();
 
-    GUI() {
+    marcaGUI() {
         tipos_marca_array = sortArrays();
         combobox_tipos_marca = new JComboBox(tipos_marca_array);
 
         //Marcas
-        registro_marca.setFont(new Font("", Font.PLAIN, 17));
-        registro_marca.setBackground(Color.yellow);
+        registro_marca.setFont(new Font("", Font.PLAIN, 21));
+        registro_marca.setForeground(Color.blue);
         registro_marca.setOpaque(true);
         registro_marca.setText("Registro de Marcas");
-        registro_marca.setBounds(20, 20, 150, 20);
+        registro_marca.setBounds(140, 20, 190, 25);
 
-        entrada_marca.setBounds(20, 40, 150, 20);
-        combobox_tipos_marca.setBounds(20, 60, 150, 20);
+        indicador_marca.setFont(new Font("", Font.PLAIN, 12));
+        indicador_marca.setForeground(Color.blue);
+        indicador_marca.setOpaque(true);
+        indicador_marca.setText("Marca");
+        indicador_marca.setBounds(275, 50, 40, 20);
 
-        aceptar_registro_marca.setFont(new Font("", Font.PLAIN, 17));
+        indicador_tipo_marca.setFont(new Font("", Font.PLAIN, 12));
+        indicador_tipo_marca.setForeground(Color.blue);
+        indicador_tipo_marca.setOpaque(true);
+        indicador_tipo_marca.setText("Tipo");
+        indicador_tipo_marca.setBounds(275, 80, 40, 20);
+
+        entrada_marca.setBounds(140, 50, 130, 20);
+        combobox_tipos_marca.setBounds(140, 80, 130, 20);
+
+        aceptar_registro_marca.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_marca.setText("Registrar");
-        aceptar_registro_marca.setBounds(20, 80, 100, 20);
+        aceptar_registro_marca.setBounds(140, 110, 90, 20);
+        eliminar_registro_marca.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_marca.setText("Eliminar");
+        eliminar_registro_marca.setBounds(230, 110, 90, 20);
 
         frame.setLayout(null);
-        frame.setBounds(400, 200, 900, 800);
+        frame.setBounds(500, 200, 500, 200);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -69,6 +86,9 @@ public class GUI {
         frame.add(entrada_marca);
         frame.add(combobox_tipos_marca);
         frame.add(aceptar_registro_marca);
+        frame.add(eliminar_registro_marca);
+        frame.add(indicador_marca);
+        frame.add(indicador_tipo_marca);
         frame.setResizable(false);
         frame.setVisible(true);
 
