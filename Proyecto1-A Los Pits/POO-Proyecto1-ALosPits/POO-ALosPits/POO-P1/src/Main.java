@@ -6,7 +6,8 @@ public class Main {
         Marca marca = new Marca();
         Modelo modelo = new Modelo();
         Cliente cliente = new Cliente();
-        marcaGUI gui = new marcaGUI();
+        marcaGUI marcagui = new marcaGUI();
+        menuGUI menugui = new menuGUI();
 
         //Usuario usuario = new Usuario();
 
