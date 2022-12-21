@@ -76,8 +76,6 @@ public class modeloGUI {
         indicador_transmision.setText("Transmision");
         indicador_transmision.setBounds(310, 270, 185, 20);
 
-
-
         //Combobox/TextField
         combobox_marcas.setBounds(40, 110, 185, 20);
         entrada_modelo.setBounds(250, 110, 185, 20);
@@ -85,6 +83,14 @@ public class modeloGUI {
         combobox_puertas.setBounds(250, 180, 185, 20);
         combobox_combustible.setBounds(40, 250, 185, 20);
         combobox_transmision.setBounds(250, 250, 185, 20);
+
+        //Buttons
+        aceptar_registro_modelo.setFont(new Font("", Font.BOLD, 12));
+        aceptar_registro_modelo.setText("Registrar");
+        aceptar_registro_modelo.setBounds(140, 270, 90, 20);
+        eliminar_registro_modelo.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_modelo.setText("Eliminar");
+        eliminar_registro_modelo.setBounds(230, 110, 90, 20);
 
         frame.add(registro_modelo);
         frame.add(combobox_marcas);

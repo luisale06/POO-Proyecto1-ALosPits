@@ -89,4 +89,18 @@ public class Marca {
         catch(Exception e) {e.printStackTrace();}
         finally {lector.close();}
     }
+
+    public String[] getMarcaTipo(){
+        int cont = 0;
+        String[] marca_tipo_array = new String[0];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                marca_tipo_array[cont] = lineas_archivo;
+                cont++;
+            }
+
+        }catch(Exception e) {e.printStackTrace();}
+        return marca_tipo_array;
+    }
 }
