@@ -11,26 +11,12 @@ public class marcaGUI {
 
     //Labels
     static JLabel registro_marca = new JLabel();
-    static JLabel registro_modelo = new JLabel();
-    static JLabel registro_cliente = new JLabel();
-    static JLabel registro_vehiculo_cliente = new JLabel();
-    static JLabel registro_servicio = new JLabel();
     static JLabel indicador_marca = new JLabel();
     static JLabel indicador_tipo_marca = new JLabel();
-
-    //TextField
-    static JTextField entrada_marca = new JTextField();
-    static JTextField entrada_tipo_marca = new JTextField();
-
 
     //Buttons
     public JButton aceptar_registro_marca = new JButton();
     public JButton eliminar_registro_marca = new JButton();
-    public JButton aceptar_registro_modelo = new JButton();
-    public JButton eliminar_registro_modelo = new JButton();
-    public JButton aceptar_registro_cliente = new JButton();
-    public JButton aceptar_registro_vehiculo_cliente = new JButton();
-    public JButton aceptar_registro_servicio = new JButton();
 
     //ComboBox
     public String[] tipos_marca_array = {"4x4", "Pickup", "SUV", "Sedan"};
@@ -44,12 +30,10 @@ public class marcaGUI {
 
     //Control CSVs
     Marca marca = new Marca();
-    Modelo modelo = new Modelo();
-    Cliente cliente = new Cliente();
 
     marcaGUI() {
 
-        //Marcas
+        //Labels
         registro_marca.setFont(new Font("", Font.PLAIN, 21));
         registro_marca.setForeground(Color.blue);
         registro_marca.setOpaque(true);
@@ -68,9 +52,11 @@ public class marcaGUI {
         indicador_tipo_marca.setText("Tipo");
         indicador_tipo_marca.setBounds(275, 80, 40, 20);
 
+        //Combobox
         combobox_marcas.setBounds(140, 50, 130, 20);
         combobox_tipos_marca.setBounds(140, 80, 130, 20);
 
+        //Buttons
         aceptar_registro_marca.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_marca.setText("Registrar");
         aceptar_registro_marca.setBounds(140, 110, 90, 20);
