@@ -11,7 +11,7 @@ public class Main {
 
         //marca.delete("Jeep", "Pickup");
 
-//        usuario.add("Fabian", "abc123");
+//        usuario.add("admin", "admin");
 
         //modelo.add("Toyota","SUV","Prado","5","5","Super","Manual");
         //modelo.add("Hyundai","SUV","Tucson","5","5","Super","Automatico");

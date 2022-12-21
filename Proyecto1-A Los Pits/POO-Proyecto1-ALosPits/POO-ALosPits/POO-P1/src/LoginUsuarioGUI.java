@@ -47,8 +47,7 @@ public class LoginUsuarioGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (BDusuarios.usuarioUnico(txtUsuario.getText())) {
-                    try {usuario.add(txtUsuario.getText(), txtPassword.getText());
-                    } catch (IOException ex) {throw new RuntimeException(ex);}
+                    BDusuarios.addUsuario(txtUsuario.getText(), txtPassword.getText());
                 } else {
                     JOptionPane.showMessageDialog(null, "Nombre de usuario existente - INTENTE DE NUEVO.", "Usuario Existente", 1);
                     txtUsuario.setText("");
