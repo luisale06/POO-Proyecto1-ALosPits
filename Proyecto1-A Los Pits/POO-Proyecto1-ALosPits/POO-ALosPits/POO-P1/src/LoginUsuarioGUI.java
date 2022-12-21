@@ -25,8 +25,6 @@ public class LoginUsuarioGUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        Usuario usuario = new Usuario();
-
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
