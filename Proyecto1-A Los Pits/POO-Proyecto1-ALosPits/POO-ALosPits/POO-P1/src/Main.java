@@ -2,16 +2,16 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        new Login();
-        menuGUI menugui = new menuGUI();
+        new LoginUsuarioGUI();
+//        menuGUI menugui = new menuGUI();
 
-        //Usuario usuario = new Usuario();
+//        Usuario usuario = new Usuario();
 
         //marca.add("Jeep", "Pickup");
 
         //marca.delete("Jeep", "Pickup");
 
-        //usuario.add("Fabian", "abc123");
+//        usuario.add("Fabian", "abc123");
 
         //modelo.add("Toyota","SUV","Prado","5","5","Super","Manual");
         //modelo.add("Hyundai","SUV","Tucson","5","5","Super","Automatico");
