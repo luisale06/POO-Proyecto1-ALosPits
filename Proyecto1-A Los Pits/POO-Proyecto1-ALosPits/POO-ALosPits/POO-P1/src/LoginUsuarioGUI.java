@@ -32,7 +32,7 @@ public class LoginUsuarioGUI {
 //                    JOptionPane.showMessageDialog(null, "Login successful!");
 
                     menuGUI ventanaMenu = new menuGUI();
-//                    dispose();
+                    frame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "No existe ese usuario.", "Usuario Inexistente", 1);
                     txtUsuario.setText("");
