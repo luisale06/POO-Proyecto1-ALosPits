@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.io.File;
+import java.io.*;
 
 public class BDusuarios {
     public static boolean validarUsuario(String user, String password) {
@@ -15,7 +11,7 @@ public class BDusuarios {
                 String[] values = line.split(",");
                 String usuario = values[0];
                 String pass = values[1];
-                if (user.equals(usuario) && String.valueOf(password).equals(pass)) {
+                if (user.equals(usuario) && password.equals(pass)) {
                     return true;
                 }
             }
@@ -49,4 +45,21 @@ public class BDusuarios {
 
         return true;
     }
+
+    public static void addUsuario(String user, String password) {
+        try {
+            File file = new File("usuarios.csv");
+            FileWriter fw = new FileWriter(file, true);
+
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write(user + "," + password);
+            bw.newLine();
+
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
