@@ -1,10 +1,12 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Marca {
 
     File file = new File("marcas.csv");
     File temp_file = new File("temp.csv");
     String lineas_archivo;
+    String[] marca_tipo_array;
     FileWriter fw;
     BufferedWriter bw;
     PrintWriter pw;
@@ -91,16 +93,49 @@ public class Marca {
     }
 
     public String[] getMarcaTipo(){
-        int cont = 0;
-        String[] marca_tipo_array = new String[0];
+        int cont = 0, csv_len = getCSVLen();
+        boolean not_marca_tipo = false;
+        marca_tipo_array = new String[csv_len - 1];
         try{
             lector = new BufferedReader(new FileReader(file));
             while((lineas_archivo = lector.readLine()) != null){
-                marca_tipo_array[cont] = lineas_archivo;
-                cont++;
+                if (not_marca_tipo){
+                    marca_tipo_array[cont] = lineas_archivo;
+                    cont++;
+                }
+                else{
+                    not_marca_tipo = true;
+                }
             }
-
         }catch(Exception e) {e.printStackTrace();}
+        System.out.println(Arrays.toString(marca_tipo_array));
+        sort_string_array();
         return marca_tipo_array;
+    }
+
+    public void sort_string_array(){
+        int size = marca_tipo_array.length;
+
+        for(int i = 0; i<size-1; i++) {
+            for (int j = i+1; j<marca_tipo_array.length; j++) {
+                if(marca_tipo_array[i].compareTo(marca_tipo_array[j])>0) {
+                    String temp = marca_tipo_array[i];
+                    marca_tipo_array[i] = marca_tipo_array[j];
+                    marca_tipo_array[j] = temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(marca_tipo_array));
+    }
+
+    public int getCSVLen(){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                csv_len++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
     }
 }

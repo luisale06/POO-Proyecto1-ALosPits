@@ -22,15 +22,19 @@ public class modeloGUI {
     public JTextField entrada_modelo = new JTextField();
 
     //Combobox
+    public String[] marcas_array = new String[0];
     public String[] asientos_array = {"2","5","7"};
     public String[] puertas_array = {"2","4"};
     public String[] combustible_array = {"Diesel","Regular","Super"};
     public String[] transmision_array = {"Automatico","Manual"};
-    public JComboBox combobox_marcas = new JComboBox();
+    public JComboBox combobox_marcas;
     public JComboBox combobox_asientos = new JComboBox(asientos_array);
     public JComboBox combobox_puertas = new JComboBox(puertas_array);
     public JComboBox combobox_combustible = new JComboBox(combustible_array);
     public JComboBox combobox_transmision = new JComboBox(transmision_array);
+
+    //CSVs
+    Marca marca = new Marca();
 
     modeloGUI(){
         //Labels
@@ -77,6 +81,9 @@ public class modeloGUI {
         indicador_transmision.setBounds(310, 270, 185, 20);
 
         //Combobox/TextField
+        marcas_array = marca.getMarcaTipo();
+        combobox_marcas = new JComboBox(marcas_array);
+
         combobox_marcas.setBounds(40, 110, 185, 20);
         entrada_modelo.setBounds(250, 110, 185, 20);
         combobox_asientos.setBounds(40, 180, 185, 20);
@@ -87,10 +94,10 @@ public class modeloGUI {
         //Buttons
         aceptar_registro_modelo.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_modelo.setText("Registrar");
-        aceptar_registro_modelo.setBounds(140, 270, 90, 20);
+        aceptar_registro_modelo.setBounds(140, 320, 90, 20);
         eliminar_registro_modelo.setFont(new Font("", Font.BOLD, 12));
         eliminar_registro_modelo.setText("Eliminar");
-        eliminar_registro_modelo.setBounds(230, 110, 90, 20);
+        eliminar_registro_modelo.setBounds(230, 320, 90, 20);
 
         frame.add(registro_modelo);
         frame.add(combobox_marcas);
@@ -105,6 +112,8 @@ public class modeloGUI {
         frame.add(indicador_puertas);
         frame.add(indicador_combustible);
         frame.add(indicador_transmision);
+        frame.add(aceptar_registro_modelo);
+        frame.add(eliminar_registro_modelo);
 
         frame.setLayout(null);
         frame.setBounds(500, 200, 500, 400);
