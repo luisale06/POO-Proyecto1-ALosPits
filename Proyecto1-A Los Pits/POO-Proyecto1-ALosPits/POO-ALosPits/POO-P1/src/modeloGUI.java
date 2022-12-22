@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class modeloGUI {
     //Frame
@@ -22,7 +25,7 @@ public class modeloGUI {
     public JTextField entrada_modelo = new JTextField();
 
     //Combobox
-    public String[] marcas_array = new String[0];
+    public String[] marcas_array;
     public String[] asientos_array = {"2","5","7"};
     public String[] puertas_array = {"2","4"};
     public String[] combustible_array = {"Diesel","Regular","Super"};
@@ -35,6 +38,7 @@ public class modeloGUI {
 
     //CSVs
     Marca marca = new Marca();
+    Modelo modelo = new Modelo();
 
     modeloGUI(){
         //Labels
@@ -83,13 +87,14 @@ public class modeloGUI {
         //Combobox/TextField
         marcas_array = marca.getMarcaTipo();
         combobox_marcas = new JComboBox(marcas_array);
-
         combobox_marcas.setBounds(40, 110, 185, 20);
-        entrada_modelo.setBounds(250, 110, 185, 20);
         combobox_asientos.setBounds(40, 180, 185, 20);
         combobox_puertas.setBounds(250, 180, 185, 20);
         combobox_combustible.setBounds(40, 250, 185, 20);
         combobox_transmision.setBounds(250, 250, 185, 20);
+
+        entrada_modelo.setFont(new Font("", Font.BOLD, 12));
+        entrada_modelo.setBounds(250, 110, 185, 20);
 
         //Buttons
         aceptar_registro_modelo.setFont(new Font("", Font.BOLD, 12));
@@ -121,5 +126,47 @@ public class modeloGUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        aceptar_registro_modelo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] marca_registro_array = String.valueOf(combobox_marcas.getSelectedItem()).split(",");
+                String marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro;
+                marca_registro = marca_registro_array[0];
+                tipo_registro = marca_registro_array[1];
+                modelo_registro = entrada_modelo.getText();
+                asientos_registro = String.valueOf(combobox_asientos.getSelectedItem());
+                puertas_registro = String.valueOf(combobox_puertas.getSelectedItem());
+                combustible_registro = String.valueOf(combobox_combustible.getSelectedItem());
+                transmision_registro = String.valueOf(combobox_transmision.getSelectedItem());
+
+                try {
+                    modelo.add(marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        eliminar_registro_modelo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] marca_registro_array = String.valueOf(combobox_marcas.getSelectedItem()).split(",");
+                String marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro;
+                marca_registro = marca_registro_array[0];
+                tipo_registro = marca_registro_array[1];
+                modelo_registro = entrada_modelo.getText();
+                asientos_registro = String.valueOf(combobox_asientos.getSelectedItem());
+                puertas_registro = String.valueOf(combobox_puertas.getSelectedItem());
+                combustible_registro = String.valueOf(combobox_combustible.getSelectedItem());
+                transmision_registro = String.valueOf(combobox_transmision.getSelectedItem());
+
+                try {
+                    modelo.delete(marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 }

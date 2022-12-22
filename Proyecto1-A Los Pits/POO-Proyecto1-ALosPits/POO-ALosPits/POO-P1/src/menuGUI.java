@@ -92,5 +92,11 @@ public class menuGUI {
                 modeloGUI ventana_modelo = new modeloGUI();
             }
         });
+        boton_registro_cliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clienteGUI ventana_cliente = new clienteGUI();
+            }
+        });
     }
 }
