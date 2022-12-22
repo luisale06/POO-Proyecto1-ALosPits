@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Cliente {
     File file = new File("clientes.csv");
@@ -8,6 +9,7 @@ public class Cliente {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
+    String[] id_array;
 
     public void add(String id, String nombre, String tipo_id, String provincia, String canton, String nacimiento, String telefono, String correo) throws IOException {
         boolean ismarca = true;
@@ -89,5 +91,37 @@ public class Cliente {
         }
         catch(Exception e) {e.printStackTrace();}
         finally {lector.close();}
+    }
+
+    public String[] getIDs(){
+        int cont = 0, csv_len = getCSVLen();
+        boolean not_titulo = false;
+        id_array = new String[csv_len - 1];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                if (not_titulo){
+                    String[] fila = lineas_archivo.split(",");
+                    id_array[cont] = fila[0];
+                    cont++;
+                }
+                else{
+                    not_titulo = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        System.out.println(Arrays.toString(id_array));
+        return id_array;
+    }
+
+    public int getCSVLen(){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                csv_len++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
     }
 }
