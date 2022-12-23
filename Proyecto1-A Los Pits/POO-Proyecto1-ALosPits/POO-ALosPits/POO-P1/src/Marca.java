@@ -92,45 +92,25 @@ public class Marca {
         finally {lector.close();}
     }
 
-    public String[] getMarcaTipo(){
+    public String[] getMarcaTipo() {
         int cont = 0, csv_len = getCSVLen();
         boolean not_titulo = false;
         marca_tipo_array = new String[csv_len - 1];
-        try{
+        try {
             lector = new BufferedReader(new FileReader(file));
-            while((lineas_archivo = lector.readLine()) != null){
-                if (not_titulo){
+            while ((lineas_archivo = lector.readLine()) != null) {
+                if (not_titulo) {
                     marca_tipo_array[cont] = lineas_archivo;
                     cont++;
-                }
-                else{
+                } else {
                     not_titulo = true;
                 }
             }
-        }catch(Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(Arrays.toString(marca_tipo_array));
         sort_string_array();
-        return marca_tipo_array;
-    }
-
-    public String[] getsoloIDs(){
-        int cont = 0, csv_len = getCSVLen();
-        boolean not_titulo = false;
-        marca_tipo_array = new String[csv_len - 1];
-        try{
-            lector = new BufferedReader(new FileReader(file));
-            while((lineas_archivo = lector.readLine()) != null){
-                if (not_titulo){
-                    String[] fila = lineas_archivo.split(",");
-                    marca_tipo_array[cont] = fila[0];
-                    cont++;
-                }
-                else{
-                    not_titulo = true;
-                }
-            }
-        }catch(Exception e) {e.printStackTrace();}
-        System.out.println(Arrays.toString(marca_tipo_array));
         return marca_tipo_array;
     }
 

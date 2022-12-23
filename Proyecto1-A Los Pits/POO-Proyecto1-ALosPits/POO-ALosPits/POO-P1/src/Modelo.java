@@ -1,9 +1,11 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Modelo {
     File file = new File("modelos.csv");
     File temp_file = new File("temp.csv");
     String lineas_archivo;
+    String[] marca_modelo_array;
     FileWriter fw;
     BufferedWriter bw;
     PrintWriter pw;
@@ -89,5 +91,37 @@ public class Modelo {
         }
         catch(Exception e) {e.printStackTrace();}
         finally {lector.close();}
+    }
+
+    public String[] getMarcaModelo(){
+        int cont = 0, csv_len = getCSVLen();
+        boolean not_titulo = false;
+        marca_modelo_array = new String[csv_len - 1];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                if (not_titulo){
+                    String[] fila = lineas_archivo.split(",");
+                    marca_modelo_array[cont] = fila[0] + "," + fila[2];
+                    cont++;
+                }
+                else{
+                    not_titulo = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        System.out.println(Arrays.toString(marca_modelo_array));
+        return marca_modelo_array;
+    }
+
+    public int getCSVLen(){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                csv_len++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
     }
 }

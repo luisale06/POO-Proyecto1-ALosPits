@@ -84,7 +84,7 @@ public class modeloGUI {
         indicador_transmision.setText("Transmision");
         indicador_transmision.setBounds(310, 270, 185, 20);
 
-        //Combobox/TextField
+        //Combobox / TextField
         marcas_array = marca.getMarcaTipo();
         combobox_marcas = new JComboBox(marcas_array);
         combobox_marcas.setBounds(40, 110, 185, 20);
@@ -153,6 +153,7 @@ public class modeloGUI {
             public void actionPerformed(ActionEvent e) {
                 String[] marca_registro_array = String.valueOf(combobox_marcas.getSelectedItem()).split(",");
                 String marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro;
+
                 marca_registro = marca_registro_array[0];
                 tipo_registro = marca_registro_array[1];
                 modelo_registro = entrada_modelo.getText();
