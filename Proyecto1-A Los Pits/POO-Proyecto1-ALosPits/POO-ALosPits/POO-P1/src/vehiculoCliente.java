@@ -9,6 +9,7 @@ public class vehiculoCliente {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
+    String[] placas_array;
 
     public void add(String id, String marca, String modelo, String year, String placa) throws IOException {
         boolean ismarca = true;
@@ -38,5 +39,37 @@ public class vehiculoCliente {
         else {
             System.out.println(marca + "," + modelo + " de " + id + " No Añadido");
         }
+    }
+
+    public String[] getPlacas(String identificacion){
+        int cont = 0, id_len = getIDlen(identificacion);
+        placas_array = new String[id_len];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if (fila[0].equals(identificacion)){
+                    placas_array[cont] = fila[4];
+                    cont++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        System.out.println(Arrays.toString(placas_array));
+        return placas_array;
+    }
+
+    public int getIDlen(String identificacion){
+        int id_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if (fila[0].equals(identificacion)) {
+                    id_len++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        System.out.println(id_len);
+        return id_len;
     }
 }

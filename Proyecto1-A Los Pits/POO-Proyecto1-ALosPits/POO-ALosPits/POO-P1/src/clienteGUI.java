@@ -25,7 +25,6 @@ public class clienteGUI {
 
     //Button
     public JButton aceptar_registro_cliente = new JButton();
-    public JButton eliminar_registro_cliente = new JButton();
 
     //Textfield
     public JTextField entrada_ID = new JTextField();

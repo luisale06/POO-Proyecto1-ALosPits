@@ -104,5 +104,11 @@ public class menuGUI {
                 vehiculoclienteGUI ventana_vehiculo = new vehiculoclienteGUI();
             }
         });
+        boton_registro_servicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tiposervicioGUI ventana_servicios = new tiposervicioGUI();
+            }
+        });
     }
 }
