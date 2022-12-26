@@ -63,6 +63,7 @@ public class tiposervicioGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String identificacion = String.valueOf(combobox_id.getSelectedItem());
+                enderezado_pinturaGUI ventana_enderezado_pintura = new enderezado_pinturaGUI(identificacion);
             }
         });
     }
