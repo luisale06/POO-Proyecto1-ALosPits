@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class mecanica_generalGUI {
 
@@ -157,6 +160,29 @@ public class mecanica_generalGUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
-    }
 
+        aceptar_registro_servicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id_registro, placa_registro, descripcion_vehiculo_registro, descripcion_problema_registro, costo_registro,
+                        fecha_recibido_registro, fecha_entrega_registro, empleado_registro, estado_registro;
+                id_registro = entrada_ID.getText();
+                placa_registro = String.valueOf(combobox_placa.getSelectedItem());
+                descripcion_vehiculo_registro = entrada_descripcion_vehiculo.getText();
+                descripcion_problema_registro = entrada_descripcion_problema.getText();
+                costo_registro = entrada_costo.getText();
+                fecha_recibido_registro = entrada_fecha_recibido.getText();
+                fecha_entrega_registro = entrada_fecha_entrega.getText();
+                empleado_registro = entrada_empleado.getText();
+                estado_registro = String.valueOf(combobox_estado.getSelectedItem());
+
+                try {
+                    servicio.add(id_registro, placa_registro, descripcion_vehiculo_registro, descripcion_problema_registro, costo_registro,
+                            fecha_recibido_registro, fecha_entrega_registro, empleado_registro, estado_registro);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+    }
 }

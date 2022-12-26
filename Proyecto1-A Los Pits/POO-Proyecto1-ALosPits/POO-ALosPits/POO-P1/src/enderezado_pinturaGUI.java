@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class enderezado_pinturaGUI {
     private final JFrame frame = new JFrame("Mecanica General");
@@ -16,6 +19,7 @@ public class enderezado_pinturaGUI {
     static JLabel indicador_empleado = new JLabel();
     static JLabel indicador_estado = new JLabel();
     static JLabel indicador_poliza = new JLabel();
+    static JLabel indicador_caso = new JLabel();
 
     //Button
     public JButton aceptar_registro_servicio = new JButton();
@@ -28,6 +32,7 @@ public class enderezado_pinturaGUI {
     public JTextField entrada_fecha_recibido = new JTextField();
     public JTextField entrada_fecha_entrega = new JTextField();
     public JTextField entrada_empleado = new JTextField();
+    public JTextField entrada_caso = new JTextField();
 
     //Combobox
     public String[] placas_array;
@@ -38,7 +43,7 @@ public class enderezado_pinturaGUI {
 
     public JComboBox combobox_placa;
 
-    MecanicaGeneral servicio = new MecanicaGeneral();
+    EnderezadoPintura servicio = new EnderezadoPintura();
     vehiculoCliente vehiculo_cliente = new vehiculoCliente();
 
     enderezado_pinturaGUI(String identificacion){
@@ -109,6 +114,12 @@ public class enderezado_pinturaGUI {
         indicador_poliza.setText("Poliza");
         indicador_poliza.setBounds(320, 410, 185, 20);
 
+        indicador_caso.setFont(new Font("", Font.BOLD, 12));
+        indicador_caso.setForeground(Color.blue);
+        indicador_caso.setOpaque(true);
+        indicador_caso.setText("Caso");
+        indicador_caso.setBounds(220, 480, 185, 20);
+
         //TextFields/Combobox
         entrada_ID.setText(identificacion);
         entrada_ID.setEditable(false);
@@ -126,6 +137,10 @@ public class enderezado_pinturaGUI {
         entrada_fecha_entrega.setBounds(40, 320, 185, 20);
         entrada_empleado.setFont(new Font("", Font.BOLD, 12));
         entrada_empleado.setBounds(250, 320, 185, 20);
+        entrada_caso.setText(String.valueOf(servicio.getCasos()));
+        entrada_caso.setEditable(false);
+        entrada_caso.setFont(new Font("", Font.BOLD, 12));
+        entrada_caso.setBounds(150, 460, 185, 20);
 
         placas_array = vehiculo_cliente.getPlacas(identificacion);
         combobox_placa = new JComboBox(placas_array);
@@ -136,7 +151,7 @@ public class enderezado_pinturaGUI {
         //Buttons
         aceptar_registro_servicio.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_servicio.setText("Registrar");
-        aceptar_registro_servicio.setBounds(185, 470, 90, 20);
+        aceptar_registro_servicio.setBounds(185, 520, 90, 20);
 
         frame.add(registro_enderezado_pintura);
         frame.add(indicador_ID);
@@ -149,6 +164,7 @@ public class enderezado_pinturaGUI {
         frame.add(indicador_empleado);
         frame.add(indicador_estado);
         frame.add(indicador_poliza);
+        frame.add(indicador_caso);
         frame.add(entrada_ID);
         frame.add(combobox_placa);
         frame.add(entrada_descripcion_vehiculo);
@@ -157,15 +173,42 @@ public class enderezado_pinturaGUI {
         frame.add(entrada_fecha_recibido);
         frame.add(entrada_fecha_entrega);
         frame.add(entrada_empleado);
+        frame.add(entrada_caso);
         frame.add(combobox_estado);
         frame.add(combobox_poliza);
         frame.add(aceptar_registro_servicio);
 
         frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 550);
+        frame.setBounds(500, 200, 500, 600);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        aceptar_registro_servicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id_registro, placa_registro, descripcion_vehiculo_registro, partes_enderezar_registro, costo_registro,
+                        fecha_recibido_registro, fecha_entrega_registro, empleado_registro, estado_registro, poliza_registro, caso_registro;
+                id_registro = entrada_ID.getText();
+                placa_registro = String.valueOf(combobox_placa.getSelectedItem());
+                descripcion_vehiculo_registro = entrada_descripcion_vehiculo.getText();
+                partes_enderezar_registro = entrada_partes_enderezar.getText();
+                costo_registro = entrada_costo.getText();
+                fecha_recibido_registro = entrada_fecha_recibido.getText();
+                fecha_entrega_registro = entrada_fecha_entrega.getText();
+                empleado_registro = entrada_empleado.getText();
+                estado_registro = String.valueOf(combobox_estado.getSelectedItem());
+                poliza_registro = String.valueOf(combobox_poliza.getSelectedItem());
+                caso_registro = entrada_caso.getText();
+
+                try {
+                    servicio.add(id_registro, placa_registro, descripcion_vehiculo_registro, partes_enderezar_registro, poliza_registro, caso_registro,
+                            costo_registro, fecha_recibido_registro, fecha_entrega_registro, empleado_registro, estado_registro);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 }

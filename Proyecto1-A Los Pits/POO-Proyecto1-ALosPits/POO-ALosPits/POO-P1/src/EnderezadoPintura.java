@@ -39,4 +39,15 @@ public class EnderezadoPintura {
             System.out.println("Servicio NO añadida");
         }
     }
+
+    public int getCasos(){
+        int casos = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                casos++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return casos;
+    }
 }
