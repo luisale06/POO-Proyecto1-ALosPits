@@ -142,7 +142,7 @@ public class enderezado_pinturaGUI {
         entrada_caso.setFont(new Font("", Font.BOLD, 12));
         entrada_caso.setBounds(150, 460, 185, 20);
 
-        placas_array = vehiculo_cliente.getPlacas(identificacion);
+        placas_array = vehiculo_cliente.getIDPlacas(identificacion);
         combobox_placa = new JComboBox(placas_array);
         combobox_placa.setBounds(250, 110, 185, 20);
         combobox_estado.setBounds(40, 390, 185, 20);

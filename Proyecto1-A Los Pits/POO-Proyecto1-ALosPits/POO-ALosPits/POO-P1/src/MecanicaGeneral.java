@@ -34,10 +34,10 @@ public class MecanicaGeneral {
             pw.println(id + "," + placa + "," + descripcion_vehiculo + "," + descripcion_problema + "," + costo + "," + fecha_recibido + "," + fecha_entrega + "," + empleado + "," + estado);
             pw.flush();
             pw.close();
-            System.out.println("Servicio Añadido");
+            System.out.println("Servicio añadido");
         }
         else {
-            System.out.println("Servicio NO añadida");
+            System.out.println("Servicio NO añadido");
         }
     }
 }

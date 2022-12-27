@@ -41,7 +41,7 @@ public class vehiculoCliente {
         }
     }
 
-    public String[] getPlacas(String identificacion){
+    public String[] getIDPlacas(String identificacion){
         int cont = 0, id_len = getIDlen(identificacion);
         placas_array = new String[id_len];
         try{
@@ -54,7 +54,6 @@ public class vehiculoCliente {
                 }
             }
         }catch(Exception e) {e.printStackTrace();}
-        System.out.println(Arrays.toString(placas_array));
         return placas_array;
     }
 
@@ -69,7 +68,37 @@ public class vehiculoCliente {
                 }
             }
         }catch(Exception e) {e.printStackTrace();}
-        System.out.println(id_len);
         return id_len;
+    }
+    
+    public String[] getPlacas(){
+        int cont = 0, csv_len = getCSVLen();
+        boolean not_titulo = false;
+        placas_array = new String[csv_len - 1];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                if (not_titulo){
+                    String[] fila = lineas_archivo.split(",");
+                    placas_array[cont] = fila[4];
+                    cont++;
+                }
+                else{
+                    not_titulo = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return placas_array;
+    }
+
+    public int getCSVLen(){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                csv_len++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
     }
 }

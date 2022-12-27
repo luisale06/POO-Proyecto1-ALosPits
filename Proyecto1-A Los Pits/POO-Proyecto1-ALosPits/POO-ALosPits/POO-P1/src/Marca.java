@@ -109,7 +109,6 @@ public class Marca {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(Arrays.toString(marca_tipo_array));
         sort_string_array();
         return marca_tipo_array;
     }
@@ -126,7 +125,6 @@ public class Marca {
                 }
             }
         }
-        System.out.println(Arrays.toString(marca_tipo_array));
     }
 
     public int getCSVLen(){

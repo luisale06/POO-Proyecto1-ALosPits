@@ -110,7 +110,6 @@ public class Cliente {
                 }
             }
         }catch(Exception e) {e.printStackTrace();}
-        System.out.println(Arrays.toString(id_array));
         return id_array;
     }
 

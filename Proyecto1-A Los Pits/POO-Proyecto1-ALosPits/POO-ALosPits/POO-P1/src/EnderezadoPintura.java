@@ -36,7 +36,7 @@ public class EnderezadoPintura {
             System.out.println("Servicio Añadido");
         }
         else {
-            System.out.println("Servicio NO añadida");
+            System.out.println("Servicio NO añadido");
         }
     }
 

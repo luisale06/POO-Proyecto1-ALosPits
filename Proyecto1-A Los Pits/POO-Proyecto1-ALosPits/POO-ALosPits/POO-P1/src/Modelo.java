@@ -110,7 +110,6 @@ public class Modelo {
                 }
             }
         }catch(Exception e) {e.printStackTrace();}
-        System.out.println(Arrays.toString(marca_modelo_array));
         return marca_modelo_array;
     }
 

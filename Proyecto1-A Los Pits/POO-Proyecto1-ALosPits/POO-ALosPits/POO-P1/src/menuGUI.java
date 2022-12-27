@@ -110,5 +110,12 @@ public class menuGUI {
                 tiposervicioGUI ventana_servicios = new tiposervicioGUI();
             }
         });
+
+        boton_consulta_servicios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tipoconsultaGUI ventana_consultas = new tipoconsultaGUI();
+            }
+        });
     }
 }

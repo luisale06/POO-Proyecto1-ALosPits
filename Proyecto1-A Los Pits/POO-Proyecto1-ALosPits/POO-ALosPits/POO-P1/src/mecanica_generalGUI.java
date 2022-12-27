@@ -123,7 +123,7 @@ public class mecanica_generalGUI {
         entrada_empleado.setFont(new Font("", Font.BOLD, 12));
         entrada_empleado.setBounds(250, 320, 185, 20);
 
-        placas_array = vehiculo_cliente.getPlacas(identificacion);
+        placas_array = vehiculo_cliente.getIDPlacas(identificacion);
         combobox_placa = new JComboBox(placas_array);
         combobox_placa.setBounds(250, 110, 185, 20);
         combobox_estado.setBounds(150, 390, 185, 20);
