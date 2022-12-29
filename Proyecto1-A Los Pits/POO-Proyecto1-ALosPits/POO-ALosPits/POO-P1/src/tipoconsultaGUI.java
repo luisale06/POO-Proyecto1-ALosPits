@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class tipoconsultaGUI {
     //Frame
@@ -63,5 +65,36 @@ public class tipoconsultaGUI {
         frame.add(busqueda_estado);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        busqueda_id.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = String.valueOf(combobox_id.getSelectedItem());
+                String placa = String.valueOf(combobox_placa.getSelectedItem());
+
+                consultaServicioGUI ventana = new consultaServicioGUI(id, placa, "ID");
+            }
+        });
+
+        busqueda_placa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = String.valueOf(combobox_id.getSelectedItem());
+                String placa = String.valueOf(combobox_placa.getSelectedItem());
+
+                consultaServicioGUI ventana = new consultaServicioGUI(id, placa, "Placa");
+            }
+        });
+
+        busqueda_estado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String id = String.valueOf(combobox_id.getSelectedItem());
+                String placa = String.valueOf(combobox_placa.getSelectedItem());
+
+                consultaServicioGUI ventana = new consultaServicioGUI(id, placa, "Estado");
+            }
+        });
     }
 }

@@ -50,4 +50,41 @@ public class EnderezadoPintura {
         }catch(Exception e) {e.printStackTrace();}
         return casos;
     }
+
+    public String[][] get_serviciosEstado(String estado){
+        String[][] servicios;
+        int cont = 0, column = 11, csv_len = getCSVEstadoLen(estado);
+        servicios = new String[csv_len][column];
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null) {
+                String[] fila = lineas_archivo.split(",");
+                if (fila[10].equals(estado)) {
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        servicios[cont][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                    cont++;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return servicios;
+    }
+
+    public int getCSVEstadoLen(String estado){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if(fila[10].equals(estado)){
+                    csv_len++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
+    }
 }

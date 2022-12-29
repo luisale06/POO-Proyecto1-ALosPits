@@ -5,6 +5,7 @@ public class MecanicaGeneral {
 
     File file = new File("mecanicageneral.csv");
     String lineas_archivo;
+    String[][] servicios;
     FileWriter fw;
     BufferedWriter bw;
     PrintWriter pw;
@@ -39,5 +40,41 @@ public class MecanicaGeneral {
         else {
             System.out.println("Servicio NO añadido");
         }
+    }
+
+    public String[][] get_serviciosEstado(String estado){
+        int cont = 0, column = 9, csv_len = getCSVEstadoLen(estado);
+        servicios = new String[csv_len][column];
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null) {
+                String[] fila = lineas_archivo.split(",");
+                if (fila[8].equals(estado)) {
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        servicios[cont][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                    cont++;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return servicios;
+    }
+
+    public int getCSVEstadoLen(String estado){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if(fila[8].equals(estado)){
+                    csv_len++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
     }
 }
