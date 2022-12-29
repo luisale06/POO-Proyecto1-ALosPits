@@ -101,4 +101,23 @@ public class vehiculoCliente {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    public String[][] getVehiculo(String placa){
+        int row = 1, column = 5;
+        String[][] info_vehiculo = new String[row][column];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if (fila[4].equals(placa)){
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        info_vehiculo[0][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return info_vehiculo;
+    }
 }

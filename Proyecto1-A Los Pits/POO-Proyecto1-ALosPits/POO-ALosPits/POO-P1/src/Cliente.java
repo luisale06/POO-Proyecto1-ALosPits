@@ -123,4 +123,23 @@ public class Cliente {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    public String[][] getCliente(String id){
+        int row = 1, column = 8;
+        String[][] info_cliente = new String[row][column];
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if (fila[0].equals(id)){
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        info_cliente[0][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return info_cliente;
+    }
 }

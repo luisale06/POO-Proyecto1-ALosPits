@@ -33,7 +33,7 @@ public class consultaServicioGUI {
     MecanicaGeneral mecanicageneral = new MecanicaGeneral();
 
     consultaServicioGUI(String id, String placa, String tipo_consulta){
-
+        //Table
         if(tipo_consulta == "ID"){
             servicios_final_mg = mecanicageneral.get_serviciosID(id);
 
@@ -45,7 +45,6 @@ public class consultaServicioGUI {
             servicios_final_ep = enderezadopintura.get_serviciosPlaca(placa);
         }
         else{
-            //Table
             servicios_end_pint1 = enderezadopintura.get_serviciosEstado("Espera");
             servicios_end_pint2 = enderezadopintura.get_serviciosEstado("Ejecucion");
             servicios_end_pint3 = enderezadopintura.get_serviciosEstado("Finalizado");

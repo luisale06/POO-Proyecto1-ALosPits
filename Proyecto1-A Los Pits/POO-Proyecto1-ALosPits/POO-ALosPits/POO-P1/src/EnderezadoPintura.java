@@ -161,4 +161,36 @@ public class EnderezadoPintura {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    public String[] getServicios(){
+        String[] servicios;
+        int cont = 0, csv_len = getCSVLen();
+        servicios = new String[csv_len - 1];
+        boolean not_titulo = false;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null) {
+                if (not_titulo) {
+                    servicios[cont] = lineas_archivo;
+                    cont++;
+                } else {
+                    not_titulo = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return servicios;
+    }
+
+    public int getCSVLen(){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                csv_len++;
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
+    }
 }
