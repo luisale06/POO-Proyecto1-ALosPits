@@ -87,4 +87,78 @@ public class EnderezadoPintura {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    public String[][] get_serviciosID(String id){
+        String[][] servicios;
+        int cont = 0, column = 11, csv_len = getCSVIDLen(id);
+        servicios = new String[csv_len][column];
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null) {
+                String[] fila = lineas_archivo.split(",");
+                if (fila[0].equals(id)) {
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        servicios[cont][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                    cont++;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return servicios;
+    }
+
+    public int getCSVIDLen(String id){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if(fila[0].equals(id)){
+                    csv_len++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
+    }
+
+    public String[][] get_serviciosPlaca(String placa){
+        String[][] servicios;
+        int cont = 0, column = 11, csv_len = getCSVPlacaLen(placa);
+        servicios = new String[csv_len][column];
+        try {
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null) {
+                String[] fila = lineas_archivo.split(",");
+                if (fila[1].equals(placa)) {
+                    int cont2 = 0;
+                    while (cont2 != column) {
+                        servicios[cont][cont2] = fila[cont2];
+                        cont2++;
+                    }
+                    cont++;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return servicios;
+    }
+
+    public int getCSVPlacaLen(String placa){
+        int csv_len = 0;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] fila = lineas_archivo.split(",");
+                if(fila[1].equals(placa)){
+                    csv_len++;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return csv_len;
+    }
 }

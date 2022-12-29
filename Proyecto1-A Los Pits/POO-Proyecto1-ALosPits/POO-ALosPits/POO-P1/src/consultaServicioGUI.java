@@ -35,10 +35,14 @@ public class consultaServicioGUI {
     consultaServicioGUI(String id, String placa, String tipo_consulta){
 
         if(tipo_consulta == "ID"){
+            servicios_final_mg = mecanicageneral.get_serviciosID(id);
 
+            servicios_final_ep = enderezadopintura.get_serviciosID(id);
         }
         else if(tipo_consulta == "Placa"){
+            servicios_final_mg = mecanicageneral.get_serviciosPlaca(placa);
 
+            servicios_final_ep = enderezadopintura.get_serviciosPlaca(placa);
         }
         else{
             //Table
@@ -51,37 +55,37 @@ public class consultaServicioGUI {
             servicios_mec_gen2 = mecanicageneral.get_serviciosEstado("Ejecucion");
             servicios_mec_gen3 = mecanicageneral.get_serviciosEstado("Finalizado");
             servicios_final_mg = Stream.of(servicios_mec_gen1, servicios_mec_gen2, servicios_mec_gen3).flatMap(Stream::of).toArray(String[][]::new);
-
-            tabla_servicios_mg = new JTable(servicios_final_mg, columnas_servicios_mg);
-            scrollpane_mg = new JScrollPane(tabla_servicios_mg);
-            scrollpane_mg.setBounds(20,50,1700,150);
-
-            tabla_servicios_ep = new JTable(servicios_final_ep, columnas_servicios_ep);
-            scrollpane_ep = new JScrollPane(tabla_servicios_ep);
-            scrollpane_ep.setBounds(20,300,1700,150);
-
-            //Labels
-            nombre_tabla_mg.setFont(new Font("", Font.PLAIN, 21));
-            nombre_tabla_mg.setForeground(Color.blue);
-            nombre_tabla_mg.setOpaque(true);
-            nombre_tabla_mg.setText("Servicios de Mecanica General");
-            nombre_tabla_mg.setBounds(20, 20, 400, 25);
-
-            nombre_tabla_ep.setFont(new Font("", Font.PLAIN, 21));
-            nombre_tabla_ep.setForeground(Color.blue);
-            nombre_tabla_ep.setOpaque(true);
-            nombre_tabla_ep.setText("Servicios de Enderezado y Pintura");
-            nombre_tabla_ep.setBounds(20, 270, 400, 25);
-
-            frame.add(scrollpane_mg);
-            frame.add(scrollpane_ep);
-            frame.add(nombre_tabla_mg);
-            frame.add(nombre_tabla_ep);
-
-            frame.setLayout(null);
-            frame.setBounds(100, 100, 1800, 600);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
+
+        tabla_servicios_mg = new JTable(servicios_final_mg, columnas_servicios_mg);
+        scrollpane_mg = new JScrollPane(tabla_servicios_mg);
+        scrollpane_mg.setBounds(20,50,1700,150);
+
+        tabla_servicios_ep = new JTable(servicios_final_ep, columnas_servicios_ep);
+        scrollpane_ep = new JScrollPane(tabla_servicios_ep);
+        scrollpane_ep.setBounds(20,300,1700,150);
+
+        //Labels
+        nombre_tabla_mg.setFont(new Font("", Font.PLAIN, 21));
+        nombre_tabla_mg.setForeground(Color.blue);
+        nombre_tabla_mg.setOpaque(true);
+        nombre_tabla_mg.setText("Servicios de Mecanica General");
+        nombre_tabla_mg.setBounds(20, 20, 400, 25);
+
+        nombre_tabla_ep.setFont(new Font("", Font.PLAIN, 21));
+        nombre_tabla_ep.setForeground(Color.blue);
+        nombre_tabla_ep.setOpaque(true);
+        nombre_tabla_ep.setText("Servicios de Enderezado y Pintura");
+        nombre_tabla_ep.setBounds(20, 270, 400, 25);
+
+        frame.add(scrollpane_mg);
+        frame.add(scrollpane_ep);
+        frame.add(nombre_tabla_mg);
+        frame.add(nombre_tabla_ep);
+
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 1800, 600);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 }
