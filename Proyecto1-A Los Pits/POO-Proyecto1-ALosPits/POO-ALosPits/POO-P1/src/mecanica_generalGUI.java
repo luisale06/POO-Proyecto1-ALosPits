@@ -22,6 +22,7 @@ public class mecanica_generalGUI {
 
     //Button
     public JButton aceptar_registro_servicio = new JButton();
+    public JButton actualizar_estados = new JButton();
 
     //Textfield
     public JTextField entrada_ID = new JTextField();
@@ -131,7 +132,11 @@ public class mecanica_generalGUI {
         //Buttons
         aceptar_registro_servicio.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_servicio.setText("Registrar");
-        aceptar_registro_servicio.setBounds(185, 470, 90, 20);
+        aceptar_registro_servicio.setBounds(190, 440, 90, 20);
+
+        actualizar_estados.setFont(new Font("", Font.BOLD, 12));
+        actualizar_estados.setText("Actualizar Estado");
+        actualizar_estados.setBounds(140, 470, 200, 20);
 
         frame.add(registro_mecanica_general);
         frame.add(indicador_ID);
@@ -153,6 +158,7 @@ public class mecanica_generalGUI {
         frame.add(entrada_empleado);
         frame.add(combobox_estado);
         frame.add(aceptar_registro_servicio);
+        frame.add(actualizar_estados);
 
         frame.setLayout(null);
         frame.setBounds(500, 200, 500, 550);
@@ -182,6 +188,13 @@ public class mecanica_generalGUI {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+
+        actualizar_estados.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarEstadoGUI ventana_actualizar_estado = new actualizarEstadoGUI();
             }
         });
     }

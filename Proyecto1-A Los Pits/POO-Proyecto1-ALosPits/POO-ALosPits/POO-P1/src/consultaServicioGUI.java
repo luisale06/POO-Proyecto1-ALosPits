@@ -85,6 +85,7 @@ public class consultaServicioGUI {
         frame.setLayout(null);
         frame.setBounds(100, 100, 1800, 600);
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 }

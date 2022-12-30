@@ -3,6 +3,7 @@ import java.io.*;
 public class EnderezadoPintura {
 
     File file = new File("enderezadopintura.csv");
+    File temp_file = new File("temp.csv");
     String lineas_archivo;
     FileWriter fw;
     BufferedWriter bw;
@@ -192,5 +193,66 @@ public class EnderezadoPintura {
             }
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
+    }
+
+    public void deleteEstado(int posicion) throws IOException {
+        try{
+            fw = new FileWriter(temp_file, true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            boolean isdeleted = false;
+            int cont = 0;
+
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null){
+                if (cont != posicion) {
+                    pw.println(lineas_archivo);
+                }
+                else {
+                    isdeleted = true;
+                }
+                cont++;
+            }
+
+            pw.flush();
+            pw.close();
+
+            FileInputStream in = new FileInputStream(temp_file);
+            FileOutputStream out = new FileOutputStream(file);
+            try{
+                int n;
+
+                while ((n = in.read()) != -1){
+                    out.write(n);
+                }
+            }finally{
+                if (in != null){
+                    in.close();
+                }
+                if (out != null){
+                    out.close();
+                }
+            }
+            temp_file.delete();
+
+            if (isdeleted == true){
+                System.out.println("Estado Eliminado");
+            }
+            else{
+                System.out.println("Estado no Eliminado");
+            }
+        }
+        catch(Exception e) {e.printStackTrace();}
+        finally {lector.close();}
+    }
+
+    public void setEstado(String linea_editar, String estado) throws IOException {
+        String[] fila = linea_editar.split(",");
+        fw = new FileWriter(file, true);
+        bw = new BufferedWriter(fw);
+        pw = new PrintWriter(bw);
+        pw.println(fila[0] + "," + fila[1] + "," + fila[2] + "," + fila[3] + "," + fila[4] + "," + fila[5] + "," + fila[6] + "," + fila[7] + "," + fila[8] + "," + fila[9] + "," + estado);
+        pw.flush();
+        pw.close();
     }
 }

@@ -79,11 +79,6 @@ public class tipoconsultaGUI {
         busqueda_datos_ep.setBounds(20, 330, 170, 20);
 
         //Frame
-        frame.setLayout(null);
-        frame.setBounds(100, 100, 1000, 400);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
         frame.add(titulo_servicios_generales);
         frame.add(titulo_servicios_especificos);
         frame.add(combobox_id);
@@ -95,6 +90,10 @@ public class tipoconsultaGUI {
         frame.add(busqueda_estado);
         frame.add(busqueda_datos_mg);
         frame.add(busqueda_datos_ep);
+
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 800, 400);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
 

@@ -84,5 +84,6 @@ public class servicioEspecificoGUI {
         frame.setBounds(100, 100, 1800, 300);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setResizable(false);
     }
 }

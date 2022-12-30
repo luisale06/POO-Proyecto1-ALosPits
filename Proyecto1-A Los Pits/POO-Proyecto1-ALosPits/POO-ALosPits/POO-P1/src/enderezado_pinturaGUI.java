@@ -23,6 +23,7 @@ public class enderezado_pinturaGUI {
 
     //Button
     public JButton aceptar_registro_servicio = new JButton();
+    public JButton actualizar_estados = new JButton();
 
     //Textfield
     public JTextField entrada_ID = new JTextField();
@@ -151,7 +152,11 @@ public class enderezado_pinturaGUI {
         //Buttons
         aceptar_registro_servicio.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_servicio.setText("Registrar");
-        aceptar_registro_servicio.setBounds(185, 520, 90, 20);
+        aceptar_registro_servicio.setBounds(190, 500, 90, 20);
+
+        actualizar_estados.setFont(new Font("", Font.BOLD, 12));
+        actualizar_estados.setText("Actualizar Estado");
+        actualizar_estados.setBounds(140, 530, 200, 20);
 
         frame.add(registro_enderezado_pintura);
         frame.add(indicador_ID);
@@ -177,6 +182,7 @@ public class enderezado_pinturaGUI {
         frame.add(combobox_estado);
         frame.add(combobox_poliza);
         frame.add(aceptar_registro_servicio);
+        frame.add(actualizar_estados);
 
         frame.setLayout(null);
         frame.setBounds(500, 200, 500, 600);
@@ -208,6 +214,13 @@ public class enderezado_pinturaGUI {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+
+        actualizar_estados.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarEstadoGUI ventana_actualizar_estado = new actualizarEstadoGUI();
             }
         });
     }
