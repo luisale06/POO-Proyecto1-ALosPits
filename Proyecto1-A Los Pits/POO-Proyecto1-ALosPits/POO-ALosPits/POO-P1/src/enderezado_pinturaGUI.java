@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se introducen los datos de los servicios de enderezado y pintura
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see enderezado_pinturaGUI
+ */
 public class enderezado_pinturaGUI {
     private final JFrame frame = new JFrame("Mecanica General");
 
@@ -47,6 +52,11 @@ public class enderezado_pinturaGUI {
     EnderezadoPintura servicio = new EnderezadoPintura();
     vehiculoCliente vehiculo_cliente = new vehiculoCliente();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     * @param identificacion cedula escogida previo a la apertura de la ventana
+     * @see tiposervicioGUI
+     */
     enderezado_pinturaGUI(String identificacion){
         //Labels
         registro_enderezado_pintura.setFont(new Font("", Font.PLAIN, 21));
@@ -191,6 +201,9 @@ public class enderezado_pinturaGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Accion asociada a los botones para aceptar registros de nuevos servicios y abrir la ventana para actualizar estados
+         */
         aceptar_registro_servicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

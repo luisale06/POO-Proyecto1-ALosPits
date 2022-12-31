@@ -3,8 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Arrays;
 
+/**
+ * Ventana donde se introducen las marcas y tipos
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see marcaGUI
+ */
 public class marcaGUI {
     //Frame
     private JFrame frame = new JFrame("Registro de Marcas");
@@ -31,6 +35,9 @@ public class marcaGUI {
     //Control CSVs
     Marca marca = new Marca();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     marcaGUI() {
 
         //Labels
@@ -79,7 +86,9 @@ public class marcaGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        //Button actions
+        /**
+         * Accion asociada a los botones para registrar y eliminar marcas y tipos específicos
+         */
         aceptar_registro_marca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

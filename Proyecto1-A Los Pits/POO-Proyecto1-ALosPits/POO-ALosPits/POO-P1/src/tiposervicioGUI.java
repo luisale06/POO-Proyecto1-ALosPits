@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Ventana donde se escoge el tipo de servicio que se va a registrar
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see tiposervicioGUI
+ */
 public class tiposervicioGUI {
     JFrame frame = new JFrame("Tipo de Servicio");
     static JLabel tipo_servicio = new JLabel();
@@ -13,6 +18,9 @@ public class tiposervicioGUI {
     public JButton enderezado_pintura = new JButton();
     Cliente cliente = new Cliente();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     tiposervicioGUI() {
         tipo_servicio.setFont(new Font("", Font.PLAIN, 21));
         tipo_servicio.setForeground(Color.blue);
@@ -51,6 +59,9 @@ public class tiposervicioGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Acciones asociadas a los botones que abren las ventanas de registro de enderezado/pintura o mecanica general
+         */
         mecanica_general.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

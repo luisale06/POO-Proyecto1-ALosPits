@@ -1,6 +1,10 @@
 import java.io.*;
-import java.util.Arrays;
 
+/**
+ * Clase donde se registran los modelos de vehiculos automoviles
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see Modelo
+ */
 public class Modelo {
     File file = new File("modelos.csv");
     File temp_file = new File("temp.csv");
@@ -10,6 +14,18 @@ public class Modelo {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
+
+    /**
+     * Método que agrega un nuevo modelo al csv
+     * @param marca marca del vehículo
+     * @param tipo tipo de vehículo
+     * @param modelo modelo del vehículo
+     * @param asientos cantidad asientos del vehículo
+     * @param puertas cantidad de puertas
+     * @param combustible tipo de combustible
+     * @param transmision tipo de transmisión
+     * @throws IOException
+     */
 
     public void add(String marca, String tipo, String modelo, String asientos, String puertas, String combustible, String transmision) throws IOException {
         boolean ismarca = true;
@@ -42,6 +58,17 @@ public class Modelo {
         }
     }
 
+    /**
+     * Método que elimina un modelo del csv
+     * @param marca marca del vehículo
+     * @param tipo tipo de vehículo
+     * @param modelo modelo del vehículo
+     * @param asientos cantidad asientos del vehículo
+     * @param puertas cantidad de puertas
+     * @param combustible tipo de combustible
+     * @param transmision tipo de transmisión
+     * @throws IOException
+     */
     public void delete(String marca, String tipo, String modelo, String asientos, String puertas, String combustible, String transmision) throws IOException {
         try{
             fw = new FileWriter(temp_file, true);
@@ -93,6 +120,10 @@ public class Modelo {
         finally {lector.close();}
     }
 
+    /**
+     * Método que retorna los modelos y marcas en forma de arreglo
+     * @return retorna un arreglo con las marcas y modelos
+     */
     public String[] getMarcaModelo(){
         int cont = 0, csv_len = getCSVLen();
         boolean not_titulo = false;
@@ -113,6 +144,10 @@ public class Modelo {
         return marca_modelo_array;
     }
 
+    /**
+     * Metodo que calcula la cantidad de filas que existen en el csv
+     * @return entero con la cantidad de filas
+     */
     public int getCSVLen(){
         int csv_len = 0;
         try{

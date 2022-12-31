@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.Arrays;
-
+/**
+ * Clase donde se registran los servicios de mecanica general
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see MecanicaGeneral
+ */
 public class MecanicaGeneral {
 
     File file = new File("mecanicageneral.csv");
@@ -11,7 +15,19 @@ public class MecanicaGeneral {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
-
+    /**
+     * Metodo que registra los datos de un nuevo servicio
+     * @param id cedula del cliente
+     * @param placa placa del vehiculo
+     * @param descripcion_vehiculo detalles del vehiculo
+     * @param descripcion_problema detalles del problema
+     * @param costo costo del servicio
+     * @param fecha_recibido fecha de recibido el vehiculo
+     * @param fecha_entrega fecha de entregado el vehiculo
+     * @param empleado empleado a cargo del servicio
+     * @param estado estado del servicio
+     * @throws IOException
+     */
     public void add(String id, String placa, String descripcion_vehiculo, String descripcion_problema, String costo, String fecha_recibido, String fecha_entrega, String empleado, String estado) throws IOException {
         boolean ismarca = true;
         try{
@@ -43,6 +59,11 @@ public class MecanicaGeneral {
         }
     }
 
+    /**
+     * Metodo que concatena los datos del servicio en una matriz
+     * @param estado estado del servicio que se va a buscar
+     * @return retorna una matriz con los servicios por estado
+     */
     public String[][] get_serviciosEstado(String estado){
         int cont = 0, column = 9, csv_len = getCSVEstadoLen(estado);
         servicios = new String[csv_len][column];
@@ -65,6 +86,11 @@ public class MecanicaGeneral {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de servicios por estado que están registrados
+     * @param estado estado a filtrar
+     * @return entero con la cantidad de servicios por estado
+     */
     public int getCSVEstadoLen(String estado){
         int csv_len = 0;
         try{
@@ -79,6 +105,11 @@ public class MecanicaGeneral {
         return csv_len;
     }
 
+    /**
+     * Metodo que concatena los servicios de una misma cédula en una matriz
+     * @param id cédula a buscar
+     * @return retorna una matriz con los servicios por cédula
+     */
     public String[][] get_serviciosID(String id){
         String[][] servicios;
         int cont = 0, column = 9, csv_len = getCSVIDLen(id);
@@ -102,6 +133,11 @@ public class MecanicaGeneral {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de registros para una misma cédula
+     * @param id cédula a buscar
+     * @return entero con la cantidad de servicios
+     */
     public int getCSVIDLen(String id){
         int csv_len = 0;
         try{
@@ -115,6 +151,12 @@ public class MecanicaGeneral {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    /**
+     * Metodo que concatena los servicios de una misma placa en una matriz
+     * @param placa placa a buscar
+     * @return retorna una matriz con los servicios por placa
+     */
 
     public String[][] get_serviciosPlaca(String placa){
         String[][] servicios;
@@ -139,6 +181,12 @@ public class MecanicaGeneral {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de registros para una misma placa
+     * @param placa placa a buscar
+     * @return entero con la cantidad de servicios
+     */
+
     public int getCSVPlacaLen(String placa){
         int csv_len = 0;
         try{
@@ -152,6 +200,11 @@ public class MecanicaGeneral {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    /**
+     * Metodo que retorna los servicios en un vector
+     * @return vector con los servicios completos
+     */
 
     public String[] getServicios(){
         String[] servicios;
@@ -174,6 +227,10 @@ public class MecanicaGeneral {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de filas que existen en el csv
+     * @return entero con la cantidad de filas
+     */
     public int getCSVLen(){
         int csv_len = 0;
         try{
@@ -185,6 +242,11 @@ public class MecanicaGeneral {
         return csv_len;
     }
 
+    /**
+     * Metodo que elimina un servicio específico para agregarlo de nuevo con el nuevo estado
+     * @param posicion posicion del servicio en el csv
+     * @throws IOException
+     * */
     public void deleteEstado(int posicion) throws IOException {
         try{
             fw = new FileWriter(temp_file, true);
@@ -236,6 +298,12 @@ public class MecanicaGeneral {
         finally {lector.close();}
     }
 
+    /**
+     * Metodo que agrega el servicio nuevamente con el estado actualizado
+     * @param linea_editar datos del servicio en string
+     * @param estado estado a agregar/actualizar
+     * @throws IOException
+     */
     public void setEstado(String linea_editar, String estado) throws IOException {
         String[] fila = linea_editar.split(",");
         fw = new FileWriter(file, true);

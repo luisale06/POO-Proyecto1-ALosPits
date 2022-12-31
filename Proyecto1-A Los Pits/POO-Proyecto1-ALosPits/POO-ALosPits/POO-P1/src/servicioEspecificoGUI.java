@@ -1,7 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 
+/**
+ * Ventana donde se visualizan los datos del cliente del vehículo de un servicio en específico
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see servicioEspecificoGUI
+ */
 public class servicioEspecificoGUI {
     //Frame
     private final JFrame frame = new JFrame("Servicios");
@@ -29,6 +33,13 @@ public class servicioEspecificoGUI {
     Cliente cliente = new Cliente();
     vehiculoCliente vehiculocliente = new vehiculoCliente();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     * @param id cédula del cliente
+     * @param placa placa del vehículo
+     * @param servicio servicio consultado
+     * @param tipo tipo de servicio consultado
+     */
     servicioEspecificoGUI(String id, String placa, String[] servicio, String tipo){
         if(tipo == "MG"){
             columnas_servicio = new String[] {"Cedula", "Placa", "Descripcion del Vehiculo", "Descripcion del Problema", "Costo", "Fecha Recibido", "Fecha Entrega", "Empleado", "Estado"};

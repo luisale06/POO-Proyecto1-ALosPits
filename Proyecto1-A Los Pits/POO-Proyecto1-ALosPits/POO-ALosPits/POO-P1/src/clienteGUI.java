@@ -8,6 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se introducen los datos de los clientes
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see clienteGUI
+ */
 public class clienteGUI {
 
     private final JFrame frame = new JFrame("Registro de Clientes");
@@ -51,6 +56,9 @@ public class clienteGUI {
     //CSVs
     Cliente cliente = new Cliente();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     clienteGUI(){
         //Labels
         registro_cliente.setFont(new Font("", Font.PLAIN, 21));
@@ -160,6 +168,10 @@ public class clienteGUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        /**
+         * Accion asociada al boton para registrar al cliente
+         */
 
         aceptar_registro_cliente.addActionListener(new ActionListener() {
             @Override

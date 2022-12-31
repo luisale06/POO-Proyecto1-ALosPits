@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se introduce el estado de los servicios ofrecidos para su modificacion
+ * @authors Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see actualizarEstadoGUI
+ */
 public class actualizarEstadoGUI {
     //Frame
     private final JFrame frame = new JFrame("Actualizar Servicios");
@@ -27,6 +32,10 @@ public class actualizarEstadoGUI {
     //Servicios
     EnderezadoPintura enderezado_pintura = new EnderezadoPintura();
     MecanicaGeneral mecanica_general = new MecanicaGeneral();
+
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
 
     actualizarEstadoGUI(){
 
@@ -74,6 +83,10 @@ public class actualizarEstadoGUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+
+        /**
+         * Acciones asociadas a los botones para editar los estados de los servicios
+         */
 
         actualizar_estado_mg.addActionListener(new ActionListener() {
             @Override

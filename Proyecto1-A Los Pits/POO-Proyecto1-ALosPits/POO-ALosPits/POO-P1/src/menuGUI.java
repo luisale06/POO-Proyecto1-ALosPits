@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Ventana donde se despliegan todas las opciones disponibles por la aplicación del taller a modo de menú principal
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see menuGUI
+ */
 public class menuGUI {
 
     private JFrame frame = new JFrame("Menú Principal");
@@ -19,6 +24,9 @@ public class menuGUI {
     public JButton boton_registro_servicio = new JButton();
     public JButton boton_consulta_servicios = new JButton();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     menuGUI(){
         //Labels
         titulo.setFont(new Font("", Font.PLAIN, 21));
@@ -80,6 +88,9 @@ public class menuGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Acciones asociadas a los botones que abren las ventanas para las diferentes funcionalidades de la aplicación
+         */
         boton_registro_marca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

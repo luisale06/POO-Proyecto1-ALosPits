@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se introducen los datos del vehículo y del dueño
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see vehiculoclienteGUI
+ */
 public class vehiculoclienteGUI {
     private final JFrame frame = new JFrame("Registro de Vehiculos");
 
@@ -29,6 +34,9 @@ public class vehiculoclienteGUI {
     Modelo modelo = new Modelo();
     Cliente cliente = new Cliente();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     vehiculoclienteGUI() {
         //Labels
         registro_vehiculos.setFont(new Font("", Font.PLAIN, 21));
@@ -97,6 +105,9 @@ public class vehiculoclienteGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Accion asociada a los botones para registrar vehículos a un cliente en específico
+         */
         aceptar_registro_vehiculo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -3,7 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
+/**
+ * Ventana donde se introducen los datos de los servicios de mecanica general
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see mecanica_generalGUI
+ */
 public class mecanica_generalGUI {
 
     private final JFrame frame = new JFrame("Mecanica General");
@@ -42,7 +46,11 @@ public class mecanica_generalGUI {
 
     MecanicaGeneral servicio = new MecanicaGeneral();
     vehiculoCliente vehiculo_cliente = new vehiculoCliente();
-
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     * @param identificacion cedula escogida previo a la apertura de la ventana
+     * @see tiposervicioGUI
+     */
     mecanica_generalGUI(String identificacion){
 
         //Labels
@@ -167,6 +175,9 @@ public class mecanica_generalGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Accion asociada a los botones para aceptar registros de nuevos servicios y abrir la ventana para actualizar estados
+         */
         aceptar_registro_servicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

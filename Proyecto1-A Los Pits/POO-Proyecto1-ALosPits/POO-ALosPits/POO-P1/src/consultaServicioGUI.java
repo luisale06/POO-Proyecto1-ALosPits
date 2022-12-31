@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
+/**
+ * Ventana donde se consultan los servicios del taller por cedula, placa o estado
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see consultaServicioGUI
+ */
 public class consultaServicioGUI {
     //Frame
     private final JFrame frame = new JFrame("Servicios");
@@ -32,6 +37,12 @@ public class consultaServicioGUI {
     EnderezadoPintura enderezadopintura = new EnderezadoPintura();
     MecanicaGeneral mecanicageneral = new MecanicaGeneral();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     * @param id cedula para el filtro
+     * @param placa placa para el filtro
+     * @param tipo_consulta si se filtra por cedula, estado, o placa
+     */
     consultaServicioGUI(String id, String placa, String tipo_consulta){
         //Table
         if(tipo_consulta == "ID"){

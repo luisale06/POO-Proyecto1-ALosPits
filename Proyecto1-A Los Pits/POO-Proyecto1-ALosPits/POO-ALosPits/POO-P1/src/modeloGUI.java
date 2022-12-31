@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se introducen los datos del modelo del vehículo
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see modeloGUI
+ */
 public class modeloGUI {
     //Frame
     private final JFrame frame = new JFrame("Registro de Modelos");
@@ -40,6 +45,9 @@ public class modeloGUI {
     Marca marca = new Marca();
     Modelo modelo = new Modelo();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     modeloGUI(){
         //Labels
         registro_modelo.setFont(new Font("", Font.PLAIN, 21));
@@ -127,6 +135,9 @@ public class modeloGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Accion asociada a los botones para registrar y eliminar modelos específicos
+         */
         aceptar_registro_modelo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

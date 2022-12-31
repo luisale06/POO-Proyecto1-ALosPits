@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Ventana donde se escoge el tipo de servicio que se va a consultar y los diferentes filtros
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see tipoconsultaGUI
+ */
 public class tipoconsultaGUI {
     //Frame
     private JFrame frame = new JFrame("Tipo de Consulta");
@@ -31,6 +36,9 @@ public class tipoconsultaGUI {
     EnderezadoPintura enderezado_pintura = new EnderezadoPintura();
     MecanicaGeneral mecanica_general = new MecanicaGeneral();
 
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana
+     */
     tipoconsultaGUI(){
         //Labels
         titulo_servicios_generales.setFont(new Font("", Font.PLAIN, 21));
@@ -97,6 +105,9 @@ public class tipoconsultaGUI {
         frame.setResizable(false);
         frame.setVisible(true);
 
+        /**
+         * Acciones asociadas a los botones que filtran por cédula, placa, estado o despliegan servicios específicos
+         */
         busqueda_id.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

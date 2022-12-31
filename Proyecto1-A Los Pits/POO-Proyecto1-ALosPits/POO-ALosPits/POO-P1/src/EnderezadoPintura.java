@@ -1,5 +1,10 @@
 import java.io.*;
 
+/**
+ * Clase donde se registran los servicios de enderezado y pintura
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see EnderezadoPintura
+ */
 public class EnderezadoPintura {
 
     File file = new File("enderezadopintura.csv");
@@ -9,6 +14,22 @@ public class EnderezadoPintura {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
+
+    /**
+     * Método que registra los datos de un nuevo servicio
+     * @param id cedula del cliente
+     * @param placa placa del vehiculo
+     * @param descripcion_vehiculo detalles del vehículo
+     * @param partes_enderezar_pintar partes del vehículo a trabajar
+     * @param costo costo del servicio
+     * @param poliza si cuenta con poliza o no
+     * @param numero_caso numero de caso del servicio
+     * @param fecha_recibido fecha de recibido el vehículo
+     * @param fecha_entrega fecha de entregado el vehículo
+     * @param empleado empleado a cargo del servicio
+     * @param estado estado del servicio
+     * @throws IOException
+     */
 
     public void add(String id, String placa, String descripcion_vehiculo, String partes_enderezar_pintar, String costo, String poliza, String numero_caso, String fecha_recibido, String fecha_entrega, String empleado, String estado) throws IOException {
         boolean ismarca = true;
@@ -41,6 +62,10 @@ public class EnderezadoPintura {
         }
     }
 
+    /**
+     * Metodo que retorna la cantidad de casos registrados
+     * @return casos (entero con la cantidad de casos
+     */
     public int getCasos(){
         int casos = 0;
         try{
@@ -52,6 +77,11 @@ public class EnderezadoPintura {
         return casos;
     }
 
+    /**
+     * Metodo que concatena los datos del servicio en una matriz
+     * @param estado estado del servicio que se va a buscar
+     * @return retorna una matriz con los servicios por estado
+     */
     public String[][] get_serviciosEstado(String estado){
         String[][] servicios;
         int cont = 0, column = 11, csv_len = getCSVEstadoLen(estado);
@@ -75,6 +105,11 @@ public class EnderezadoPintura {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de servicios por estado que estan registrados
+     * @param estado estado a filtrar
+     * @return entero con la cantidad de servicios por estado
+     */
     public int getCSVEstadoLen(String estado){
         int csv_len = 0;
         try{
@@ -89,6 +124,11 @@ public class EnderezadoPintura {
         return csv_len;
     }
 
+    /**
+     * Metodo que concatena los servicios de una misma cédula en una matriz
+     * @param id cédula a buscar
+     * @return retorna una matriz con los servicios por cédula
+     */
     public String[][] get_serviciosID(String id){
         String[][] servicios;
         int cont = 0, column = 11, csv_len = getCSVIDLen(id);
@@ -112,6 +152,12 @@ public class EnderezadoPintura {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de registros para una misma cédula
+     * @param id cédula a buscar
+     * @return entero con la cantidad de servicios
+     */
+
     public int getCSVIDLen(String id){
         int csv_len = 0;
         try{
@@ -126,6 +172,11 @@ public class EnderezadoPintura {
         return csv_len;
     }
 
+    /**
+     * Metodo que concatena los servicios de una misma placa en una matriz
+     * @param placa placa a buscar
+     * @return retorna una matriz con los servicios por placa
+     */
     public String[][] get_serviciosPlaca(String placa){
         String[][] servicios;
         int cont = 0, column = 11, csv_len = getCSVPlacaLen(placa);
@@ -149,6 +200,11 @@ public class EnderezadoPintura {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de registros para una misma placa
+     * @param placa placa a buscar
+     * @return entero con la cantidad de servicios
+     */
     public int getCSVPlacaLen(String placa){
         int csv_len = 0;
         try{
@@ -162,6 +218,11 @@ public class EnderezadoPintura {
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
     }
+
+    /**
+     * Metodo que retorna los servicios en un vector
+     * @return vector con los servicios completos
+     */
 
     public String[] getServicios(){
         String[] servicios;
@@ -184,6 +245,11 @@ public class EnderezadoPintura {
         return servicios;
     }
 
+    /**
+     * Metodo que calcula la cantidad de filas que existen en el csv
+     * @return entero con la cantidad de filas
+     */
+
     public int getCSVLen(){
         int csv_len = 0;
         try{
@@ -195,6 +261,11 @@ public class EnderezadoPintura {
         return csv_len;
     }
 
+    /**
+     * Metodo que elimina un servicio específico para agregarlo de nuevo con el nuevo estado
+     * @param posicion posicion del servicio en el csv
+     * @throws IOException
+     * */
     public void deleteEstado(int posicion) throws IOException {
         try{
             fw = new FileWriter(temp_file, true);
@@ -246,6 +317,12 @@ public class EnderezadoPintura {
         finally {lector.close();}
     }
 
+    /**
+     * Metodo que agrega el servicio nuevamente con el estado actualizado
+     * @param linea_editar datos del servicio en string
+     * @param estado estado a agregar/actualizar
+     * @throws IOException
+     */
     public void setEstado(String linea_editar, String estado) throws IOException {
         String[] fila = linea_editar.split(",");
         fw = new FileWriter(file, true);

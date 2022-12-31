@@ -1,6 +1,10 @@
 import java.io.*;
-import java.util.Arrays;
 
+/**
+ * Clase donde se registran las marcas de vehiculos automoviles
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see Marca
+ */
 public class Marca {
 
     File file = new File("marcas.csv");
@@ -11,6 +15,13 @@ public class Marca {
     BufferedWriter bw;
     PrintWriter pw;
     BufferedReader lector;
+
+    /**
+     * Método que agrega una nueva marca al csv
+     * @param marca marca a agregar
+     * @param tipo tipo de vehículo a agregar
+     * @throws IOException
+     */
 
     public void add(String marca, String tipo) throws IOException {
         boolean ismarca = true;
@@ -41,6 +52,13 @@ public class Marca {
             System.out.println(marca + "," + tipo + " NO añadida");
         }
     }
+
+    /**
+     * Método que elimina una marca del csv
+     * @param marca marca a eliminar
+     * @param tipo tipo de vehículo a eliminar
+     * @throws IOException
+     */
 
     public void delete(String marca, String tipo) throws IOException {
         try{
@@ -92,6 +110,11 @@ public class Marca {
         finally {lector.close();}
     }
 
+    /**
+     * Método que retorna las marcas con su respectivo tipo en forma de arreglo
+     * @return retorna un arreglo con las marcas y tipos
+     */
+
     public String[] getMarcaTipo() {
         int cont = 0, csv_len = getCSVLen();
         boolean not_titulo = false;
@@ -113,6 +136,9 @@ public class Marca {
         return marca_tipo_array;
     }
 
+    /**
+     * Método que ordena el arreglo de marcas en orden alfabético
+     */
     public void sort_string_array(){
         int size = marca_tipo_array.length;
 
@@ -127,6 +153,10 @@ public class Marca {
         }
     }
 
+    /**
+     * Metodo que calcula la cantidad de filas que existen en el csv
+     * @return entero con la cantidad de filas
+     */
     public int getCSVLen(){
         int csv_len = 0;
         try{
