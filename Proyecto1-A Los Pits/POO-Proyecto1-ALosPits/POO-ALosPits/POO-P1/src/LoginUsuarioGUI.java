@@ -21,6 +21,9 @@ public class LoginUsuarioGUI {
 
         frame.add(panel1);
 
+        txtUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        txtPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

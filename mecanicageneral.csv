@@ -1,0 +1,4 @@
+ID,Placa,DescripciónVehiculo,DescripcionProblema,Costo,FechaRecibido,FechaEntrega,Empleado,Estado
+118250665,LLG068,50000 km,cambio de aceite,25000,26/12/2022,26/12/2022,Luis Alejandro,Espera
+118250665,ABC123,10000km,reparacion de llanta,5000 colones,28/12/2022,28/12/2022,Luis Alejandro Barreda,Finalizado
+100010001,IMP005,100000,instalacion de turbo,3000000 colones,28/12/2022,04/01/2023,Luis Alejandro Barreda,Ejecucion

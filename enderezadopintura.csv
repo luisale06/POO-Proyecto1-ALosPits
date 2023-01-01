@@ -1,0 +1,5 @@
+ID,Placa,DescripciónVehiculo,PartesAEnderezarPintar,Costo,Poliza,NumeroCaso,FechaRecibido,FechaEntrega,Empleado,Estado
+118250665,LLG068,Semi-nuevo 20000 km,Capo,No,1,500 000 colones,26/12/2022,05/01/2023,Luis Alejandro Barreda,Espera
+700070007,TCS213,50000km,Bumper,Si,2,300 000 colones,28/12/2022,02/01/2023,Luis Alejandro Barreda,Ejecucion
+100010001,IMP005,100000km,aleron,Si,3,500000,28/12/2022,04/01/2023,Luis Alejandro Barreda,Finalizado
+118250665,SBR004,seminuevo,capo,Si,4,500000,28/12/2022,03/01/2023,Luis Alejandro Barreda,Finalizado
