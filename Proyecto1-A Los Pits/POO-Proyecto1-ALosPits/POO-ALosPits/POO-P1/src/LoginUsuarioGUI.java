@@ -4,14 +4,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Ventana donde se inicia sesion y se crean las nuevas cuentas
+ * @author Luis Barreda, Fabian Miranda, Franco Rojas
+ * @see LoginUsuarioGUI
+ */
 public class LoginUsuarioGUI {
+
+    // JTextField
     private JTextField txtUsuario;
+
+    // JPasswordField
     private JPasswordField txtPassword;
+
+    // Buttons
     private JButton btnSignUp;
     private JButton btnLogin;
+
+    // JPanel
     private JPanel panel1;
 
+    // JFrame
+
     private JFrame frame;
+
+    /**
+     * Metodo constructor donde se editan los objetos de la ventana.
+     */
     LoginUsuarioGUI() {
 
         frame = new JFrame("Inicio de Sesión");
