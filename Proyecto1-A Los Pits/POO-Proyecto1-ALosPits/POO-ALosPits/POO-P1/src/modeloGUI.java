@@ -198,7 +198,7 @@ public class modeloGUI {
 
                 try {
                     if(vehiculocliente.verificaModelo(marca_registro, modelo_registro)) {
-                        JOptionPane.showMessageDialog(null, "Marca y tipo asociados a un vehículo", "No se pudo eliminar", 1);
+                        JOptionPane.showMessageDialog(null, "Marca y modelo asociados a un vehículo", "No se pudo eliminar", 1);
                     }
                     else{
                         modelo.delete(marca_registro, tipo_registro, modelo_registro, asientos_registro, puertas_registro, combustible_registro, transmision_registro);
