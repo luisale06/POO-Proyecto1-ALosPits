@@ -20,6 +20,7 @@ public class consultaServicioGUI {
     public String[][] servicios_final_mg;
 
     //Labels
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     public JLabel nombre_tabla_mg = new JLabel();
     public JLabel nombre_tabla_ep = new JLabel();
 
@@ -76,23 +77,29 @@ public class consultaServicioGUI {
         //Labels
         nombre_tabla_mg.setFont(new Font("", Font.PLAIN, 21));
         nombre_tabla_mg.setForeground(Color.blue);
+        nombre_tabla_mg.setBackground(Color.white);
         nombre_tabla_mg.setOpaque(true);
         nombre_tabla_mg.setText("Servicios de Mecanica General");
         nombre_tabla_mg.setBounds(20, 20, 400, 25);
 
         nombre_tabla_ep.setFont(new Font("", Font.PLAIN, 21));
         nombre_tabla_ep.setForeground(Color.blue);
+        nombre_tabla_ep.setBackground(Color.white);
         nombre_tabla_ep.setOpaque(true);
         nombre_tabla_ep.setText("Servicios de Enderezado y Pintura");
         nombre_tabla_ep.setBounds(20, 270, 400, 25);
+
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 1800, 600);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(scrollpane_mg);
         frame.add(scrollpane_ep);
         frame.add(nombre_tabla_mg);
         frame.add(nombre_tabla_ep);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(100, 100, 1800, 600);
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

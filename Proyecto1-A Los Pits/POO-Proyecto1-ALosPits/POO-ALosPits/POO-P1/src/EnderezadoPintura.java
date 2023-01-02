@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -55,10 +56,10 @@ public class EnderezadoPintura {
             pw.println(id + "," + placa + "," + descripcion_vehiculo + "," + partes_enderezar_pintar + "," + costo + "," + poliza + "," + numero_caso + "," + fecha_recibido + "," + fecha_entrega + "," + empleado + "," + estado);
             pw.flush();
             pw.close();
-            System.out.println("Servicio Añadido");
+            JOptionPane.showMessageDialog(null,  "Servicio añadido a enderezado y pintura", "", 1);
         }
         else {
-            System.out.println("Servicio NO añadido");
+            JOptionPane.showMessageDialog(null, "Servicio previamente añadido a enderezado y pintura", "", 1);
         }
     }
 
@@ -266,21 +267,17 @@ public class EnderezadoPintura {
      * @param posicion posicion del servicio en el csv
      * @throws IOException
      * */
-    public void deleteEstado(int posicion) throws IOException {
+    public void delete(int posicion) throws IOException {
         try{
             fw = new FileWriter(temp_file, true);
             bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
-            boolean isdeleted = false;
             int cont = 0;
 
             lector = new BufferedReader(new FileReader(file));
             while ((lineas_archivo = lector.readLine()) != null){
                 if (cont != posicion) {
                     pw.println(lineas_archivo);
-                }
-                else {
-                    isdeleted = true;
                 }
                 cont++;
             }
@@ -305,13 +302,6 @@ public class EnderezadoPintura {
                 }
             }
             temp_file.delete();
-
-            if (isdeleted == true){
-                System.out.println("Estado Eliminado");
-            }
-            else{
-                System.out.println("Estado no Eliminado");
-            }
         }
         catch(Exception e) {e.printStackTrace();}
         finally {lector.close();}
@@ -331,5 +321,19 @@ public class EnderezadoPintura {
         pw.println(fila[0] + "," + fila[1] + "," + fila[2] + "," + fila[3] + "," + fila[4] + "," + fila[5] + "," + fila[6] + "," + fila[7] + "," + fila[8] + "," + fila[9] + "," + estado);
         pw.flush();
         pw.close();
+    }
+
+    public boolean verificaPlaca(String placa){
+        boolean verifica = false;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] filas = lineas_archivo.split(",");
+                if (filas[1].equals(placa)){
+                    verifica = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return verifica;
     }
 }

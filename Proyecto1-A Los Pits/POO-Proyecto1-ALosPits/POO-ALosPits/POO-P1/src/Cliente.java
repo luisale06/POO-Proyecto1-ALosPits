@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -7,6 +8,7 @@ import java.io.*;
  */
 public class Cliente {
     File file = new File("clientes.csv");
+    File temp_file = new File("temp.csv");
     String lineas_archivo;
     FileWriter fw;
     BufferedWriter bw;
@@ -33,8 +35,7 @@ public class Cliente {
 
             while ((lineas_archivo = lector.readLine()) != null){
                 String[] fila = lineas_archivo.split(",");
-                if (fila[0].equals(id) && fila[1].equals(nombre) && fila[2].equals(tipo_id) && fila[3].equals(provincia)
-                        && fila[4].equals(canton) && fila[5].equals(nacimiento) && fila[6].equals(telefono) && fila[7].equals(correo)) {
+                if (fila[0].equals(id)) {
                     ismarca = false;
                     break;
                 }
@@ -50,11 +51,66 @@ public class Cliente {
             pw.println(id + "," + nombre + "," + tipo_id + "," + provincia + "," + canton + "," + nacimiento + "," + telefono + "," + correo);
             pw.flush();
             pw.close();
-            System.out.println(nombre + " Añadid@");
+            JOptionPane.showMessageDialog(null, nombre + " añadid@", "", 1);
         }
         else {
-            System.out.println(nombre + " NO añadid@");
+            JOptionPane.showMessageDialog(null, nombre + " previamente añadid@", "", 1);
         }
+    }
+
+    /**
+     * Método que elimina el registro de un cliente por medio de su cédula
+     * @param id cédula del cliente
+     * @throws IOException
+     */
+    public void delete(String id) throws IOException {
+        try{
+            fw = new FileWriter(temp_file, true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            boolean isdeleted = false;
+
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null){
+                String[] columnas = lineas_archivo.split(",");
+                if (!columnas[0].equals(id)) {
+                    pw.println(lineas_archivo);
+                }
+                else {
+                    isdeleted = true;
+                }
+            }
+
+            pw.flush();
+            pw.close();
+
+            FileInputStream in = new FileInputStream(temp_file);
+            FileOutputStream out = new FileOutputStream(file);
+            try{
+                int n;
+
+                while ((n = in.read()) != -1){
+                    out.write(n);
+                }
+            }finally{
+                if (in != null){
+                    in.close();
+                }
+                if (out != null){
+                    out.close();
+                }
+            }
+            temp_file.delete();
+
+            if (isdeleted == true){
+                JOptionPane.showMessageDialog(null, id + " eliminado", "", 1);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, id + " previamente eliminado", "", 1);
+            }
+        }
+        catch(Exception e) {e.printStackTrace();}
+        finally {lector.close();}
     }
 
     /**

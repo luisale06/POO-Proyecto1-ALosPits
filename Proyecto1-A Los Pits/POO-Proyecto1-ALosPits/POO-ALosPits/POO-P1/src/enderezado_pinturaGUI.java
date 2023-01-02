@@ -13,6 +13,7 @@ public class enderezado_pinturaGUI {
     private final JFrame frame = new JFrame("Mecanica General");
 
     //Label
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel registro_enderezado_pintura = new JLabel();
     static JLabel indicador_ID = new JLabel();
     static JLabel indicador_placa = new JLabel();
@@ -61,72 +62,84 @@ public class enderezado_pinturaGUI {
         //Labels
         registro_enderezado_pintura.setFont(new Font("", Font.PLAIN, 21));
         registro_enderezado_pintura.setForeground(Color.blue);
+        registro_enderezado_pintura.setBackground(Color.white);
         registro_enderezado_pintura.setOpaque(true);
         registro_enderezado_pintura.setText("Enderezado/Pintura");
         registro_enderezado_pintura.setBounds(140, 20, 200, 25);
 
         indicador_ID.setFont(new Font("", Font.BOLD, 12));
         indicador_ID.setForeground(Color.blue);
+        indicador_ID.setBackground(Color.white);
         indicador_ID.setOpaque(true);
         indicador_ID.setText("Identificacion");
         indicador_ID.setBounds(90, 130, 185, 20);
 
         indicador_placa.setFont(new Font("", Font.BOLD, 12));
         indicador_placa.setForeground(Color.blue);
+        indicador_placa.setBackground(Color.white);
         indicador_placa.setOpaque(true);
         indicador_placa.setText("Placa");
         indicador_placa.setBounds(320, 130, 185, 20);
 
         indicador_descripcion_vehiculo.setFont(new Font("", Font.BOLD, 12));
         indicador_descripcion_vehiculo.setForeground(Color.blue);
+        indicador_descripcion_vehiculo.setBackground(Color.white);
         indicador_descripcion_vehiculo.setOpaque(true);
         indicador_descripcion_vehiculo.setText("Descripcion Vehiculo");
         indicador_descripcion_vehiculo.setBounds(80, 200, 185, 20);
 
         indicador_partes_enderezar.setFont(new Font("", Font.BOLD, 12));
         indicador_partes_enderezar.setForeground(Color.blue);
+        indicador_partes_enderezar.setBackground(Color.white);
         indicador_partes_enderezar.setOpaque(true);
         indicador_partes_enderezar.setText("Partes a Enderezar");
         indicador_partes_enderezar.setBounds(290, 200, 185, 20);
 
         indicador_costo.setFont(new Font("", Font.BOLD, 12));
         indicador_costo.setForeground(Color.blue);
+        indicador_costo.setBackground(Color.white);
         indicador_costo.setOpaque(true);
         indicador_costo.setText("Costo");
         indicador_costo.setBounds(110, 270, 175, 20);
 
         indicador_fecha_recibido.setFont(new Font("", Font.BOLD, 12));
         indicador_fecha_recibido.setForeground(Color.blue);
+        indicador_fecha_recibido.setBackground(Color.white);
         indicador_fecha_recibido.setOpaque(true);
         indicador_fecha_recibido.setText("Fecha Recibido");
         indicador_fecha_recibido.setBounds(300, 270, 185, 20);
 
         indicador_fecha_entrega.setFont(new Font("", Font.BOLD, 12));
         indicador_fecha_entrega.setForeground(Color.blue);
+        indicador_fecha_entrega.setBackground(Color.white);
         indicador_fecha_entrega.setOpaque(true);
         indicador_fecha_entrega.setText("Fecha Entrega");
         indicador_fecha_entrega.setBounds(90, 340, 185, 20);
 
         indicador_empleado.setFont(new Font("", Font.BOLD, 12));
         indicador_empleado.setForeground(Color.blue);
+        indicador_empleado.setBackground(Color.white);
         indicador_empleado.setOpaque(true);
         indicador_empleado.setText("Empleado");
         indicador_empleado.setBounds(310, 340, 185, 20);
 
         indicador_estado.setFont(new Font("", Font.BOLD, 12));
         indicador_estado.setForeground(Color.blue);
+        indicador_estado.setBackground(Color.white);
         indicador_estado.setOpaque(true);
         indicador_estado.setText("Estado");
         indicador_estado.setBounds(110, 410, 185, 20);
 
         indicador_poliza.setFont(new Font("", Font.BOLD, 12));
         indicador_poliza.setForeground(Color.blue);
+        indicador_poliza.setBackground(Color.white);
         indicador_poliza.setOpaque(true);
         indicador_poliza.setText("Poliza");
         indicador_poliza.setBounds(320, 410, 185, 20);
 
         indicador_caso.setFont(new Font("", Font.BOLD, 12));
         indicador_caso.setForeground(Color.blue);
+        indicador_caso.setBackground(Color.white);
         indicador_caso.setOpaque(true);
         indicador_caso.setText("Caso");
         indicador_caso.setBounds(220, 480, 185, 20);
@@ -156,17 +169,27 @@ public class enderezado_pinturaGUI {
         placas_array = vehiculo_cliente.getIDPlacas(identificacion);
         combobox_placa = new JComboBox(placas_array);
         combobox_placa.setBounds(250, 110, 185, 20);
+        combobox_placa.setBackground(Color.white);
         combobox_estado.setBounds(40, 390, 185, 20);
+        combobox_estado.setBackground(Color.white);
         combobox_poliza.setBounds(250, 390,185,20);
+        combobox_poliza.setBackground(Color.white);
 
         //Buttons
         aceptar_registro_servicio.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_servicio.setText("Registrar");
+        aceptar_registro_servicio.setBackground(Color.white);
         aceptar_registro_servicio.setBounds(190, 500, 90, 20);
 
         actualizar_estados.setFont(new Font("", Font.BOLD, 12));
-        actualizar_estados.setText("Actualizar Estado");
-        actualizar_estados.setBounds(140, 530, 200, 20);
+        actualizar_estados.setText("Actualizar Estado / Borrar Registros");
+        actualizar_estados.setBackground(Color.white);
+        actualizar_estados.setBounds(100, 530, 270, 20);
+
+        frame.setLayout(null);
+        frame.setBounds(500, 200, 500, 600);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(registro_enderezado_pintura);
         frame.add(indicador_ID);
@@ -193,10 +216,8 @@ public class enderezado_pinturaGUI {
         frame.add(combobox_poliza);
         frame.add(aceptar_registro_servicio);
         frame.add(actualizar_estados);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 600);
-        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);

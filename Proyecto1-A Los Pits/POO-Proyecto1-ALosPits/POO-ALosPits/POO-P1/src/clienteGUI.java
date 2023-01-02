@@ -14,6 +14,7 @@ public class clienteGUI {
     private final JFrame frame = new JFrame("Registro de Clientes");
 
     //Label
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel registro_cliente = new JLabel();
     static JLabel indicador_ID = new JLabel();
     static JLabel indicador_nombre = new JLabel();
@@ -26,6 +27,7 @@ public class clienteGUI {
 
     //Button
     public JButton aceptar_registro_cliente = new JButton();
+    public JButton eliminar_registro_cliente = new JButton();
 
     //Textfield
     public JTextField entrada_ID = new JTextField();
@@ -51,6 +53,7 @@ public class clienteGUI {
 
     //CSVs
     Cliente cliente = new Cliente();
+    vehiculoCliente vehiculocliente = new vehiculoCliente();
 
     /**
      * Metodo constructor donde se editan los objetos de la ventana
@@ -59,64 +62,76 @@ public class clienteGUI {
         //Labels
         registro_cliente.setFont(new Font("", Font.PLAIN, 21));
         registro_cliente.setForeground(Color.blue);
+        registro_cliente.setBackground(Color.white);
         registro_cliente.setOpaque(true);
         registro_cliente.setText("Registro de Clientes");
         registro_cliente.setBounds(140, 20, 200, 25);
 
         indicador_ID.setFont(new Font("", Font.BOLD, 12));
         indicador_ID.setForeground(Color.blue);
+        indicador_ID.setBackground(Color.white);
         indicador_ID.setOpaque(true);
         indicador_ID.setText("Identificacion");
         indicador_ID.setBounds(90, 130, 185, 20);
 
         indicador_nombre.setFont(new Font("", Font.BOLD, 12));
         indicador_nombre.setForeground(Color.blue);
+        indicador_nombre.setBackground(Color.white);
         indicador_nombre.setOpaque(true);
         indicador_nombre.setText("Nombre Completo");
         indicador_nombre.setBounds(300, 130, 185, 20);
 
         indicador_tipo_ID.setFont(new Font("", Font.BOLD, 12));
         indicador_tipo_ID.setForeground(Color.blue);
+        indicador_tipo_ID.setBackground(Color.white);
         indicador_tipo_ID.setOpaque(true);
         indicador_tipo_ID.setText("Tipo Identificacion");
         indicador_tipo_ID.setBounds(90, 200, 185, 20);
 
         indicador_provincia.setFont(new Font("", Font.BOLD, 12));
         indicador_provincia.setForeground(Color.blue);
+        indicador_provincia.setBackground(Color.white);
         indicador_provincia.setOpaque(true);
         indicador_provincia.setText("Provincia");
         indicador_provincia.setBounds(310, 200, 185, 20);
 
         indicador_canton.setFont(new Font("", Font.BOLD, 12));
         indicador_canton.setForeground(Color.blue);
+        indicador_canton.setBackground(Color.white);
         indicador_canton.setOpaque(true);
         indicador_canton.setText("Canton");
         indicador_canton.setBounds(110, 270, 175, 20);
 
         indicador_fecha_nacimiento.setFont(new Font("", Font.BOLD, 12));
         indicador_fecha_nacimiento.setForeground(Color.blue);
+        indicador_fecha_nacimiento.setBackground(Color.white);
         indicador_fecha_nacimiento.setOpaque(true);
         indicador_fecha_nacimiento.setText("Fecha de Nacimiento");
         indicador_fecha_nacimiento.setBounds(290, 270, 185, 20);
 
         indicador_telefono.setFont(new Font("", Font.BOLD, 12));
         indicador_telefono.setForeground(Color.blue);
+        indicador_telefono.setBackground(Color.white);
         indicador_telefono.setOpaque(true);
         indicador_telefono.setText("Numero de Telefono");
         indicador_telefono.setBounds(80, 340, 185, 20);
 
         indicador_correo.setFont(new Font("", Font.BOLD, 12));
         indicador_correo.setForeground(Color.blue);
+        indicador_correo.setBackground(Color.white);
         indicador_correo.setOpaque(true);
         indicador_correo.setText("Correo Electronico");
         indicador_correo.setBounds(290, 340, 185, 20);
 
         //Combobox
         combobox_tipo_ID.setBounds(40, 180, 185, 20);
+        combobox_tipo_ID.setBackground(Color.white);
 
         combobox_provincia.setBounds(250, 180, 185, 20);
+        combobox_provincia.setBackground(Color.white);
 
         combobox_canton.setBounds(40, 250, 185, 20);
+        combobox_canton.setBackground(Color.white);
 
         //TextField
         entrada_ID.setFont(new Font("", Font.BOLD, 12));
@@ -137,7 +152,18 @@ public class clienteGUI {
         //Buttons
         aceptar_registro_cliente.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_cliente.setText("Registrar");
+        aceptar_registro_cliente.setBackground(Color.white);
         aceptar_registro_cliente.setBounds(185, 400, 90, 20);
+
+        eliminar_registro_cliente.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_cliente.setText("Eliminar");
+        eliminar_registro_cliente.setBackground(Color.white);
+        eliminar_registro_cliente.setBounds(185, 430, 90, 20);
+
+        frame.setLayout(null);
+        frame.setBounds(500, 200, 500, 500);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(registro_cliente);
         frame.add(entrada_ID);
@@ -157,9 +183,9 @@ public class clienteGUI {
         frame.add(indicador_telefono);
         frame.add(indicador_correo);
         frame.add(aceptar_registro_cliente);
+        frame.add(eliminar_registro_cliente);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
@@ -186,6 +212,25 @@ public class clienteGUI {
 
                 try {
                     cliente.add(registro_ID, registro_nombre, registro_tipo_ID, registro_provincia, registro_canton, registro_fecha_nacimiento, registro_telefono, registro_correo);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        eliminar_registro_cliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String registro_ID;
+                registro_ID = entrada_ID.getText();
+
+                try{
+                    if (vehiculocliente.verificaCliente(registro_ID)){
+                        JOptionPane.showMessageDialog(null, "Existen vehículos asociados a este cliente", "No se pudo eliminar", 1);
+                    }
+                    else{
+                        cliente.delete(registro_ID);
+                    }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

@@ -13,6 +13,7 @@ public class mecanica_generalGUI {
     private final JFrame frame = new JFrame("Mecanica General");
 
     //Label
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel registro_mecanica_general = new JLabel();
     static JLabel indicador_ID = new JLabel();
     static JLabel indicador_placa = new JLabel();
@@ -56,60 +57,70 @@ public class mecanica_generalGUI {
         //Labels
         registro_mecanica_general.setFont(new Font("", Font.PLAIN, 21));
         registro_mecanica_general.setForeground(Color.blue);
+        registro_mecanica_general.setBackground(Color.white);
         registro_mecanica_general.setOpaque(true);
         registro_mecanica_general.setText("Mecanica General");
         registro_mecanica_general.setBounds(140, 20, 200, 25);
 
         indicador_ID.setFont(new Font("", Font.BOLD, 12));
         indicador_ID.setForeground(Color.blue);
+        indicador_ID.setBackground(Color.white);
         indicador_ID.setOpaque(true);
         indicador_ID.setText("Identificacion");
         indicador_ID.setBounds(90, 130, 185, 20);
 
         indicador_placa.setFont(new Font("", Font.BOLD, 12));
         indicador_placa.setForeground(Color.blue);
+        indicador_placa.setBackground(Color.white);
         indicador_placa.setOpaque(true);
         indicador_placa.setText("Placa");
         indicador_placa.setBounds(320, 130, 185, 20);
 
         indicador_descripcion_vehiculo.setFont(new Font("", Font.BOLD, 12));
         indicador_descripcion_vehiculo.setForeground(Color.blue);
+        indicador_descripcion_vehiculo.setBackground(Color.white);
         indicador_descripcion_vehiculo.setOpaque(true);
         indicador_descripcion_vehiculo.setText("Descripcion Vehiculo");
         indicador_descripcion_vehiculo.setBounds(80, 200, 185, 20);
 
         indicador_descripcion_problema.setFont(new Font("", Font.BOLD, 12));
         indicador_descripcion_problema.setForeground(Color.blue);
+        indicador_descripcion_problema.setBackground(Color.white);
         indicador_descripcion_problema.setOpaque(true);
         indicador_descripcion_problema.setText("Descripcion Problema");
         indicador_descripcion_problema.setBounds(290, 200, 185, 20);
 
         indicador_costo.setFont(new Font("", Font.BOLD, 12));
         indicador_costo.setForeground(Color.blue);
+        indicador_costo.setBackground(Color.white);
         indicador_costo.setOpaque(true);
         indicador_costo.setText("Costo");
         indicador_costo.setBounds(110, 270, 175, 20);
 
         indicador_fecha_recibido.setFont(new Font("", Font.BOLD, 12));
         indicador_fecha_recibido.setForeground(Color.blue);
+        indicador_fecha_recibido.setBackground(Color.white);
         indicador_fecha_recibido.setOpaque(true);
         indicador_fecha_recibido.setText("Fecha Recibido");
         indicador_fecha_recibido.setBounds(300, 270, 185, 20);
 
         indicador_fecha_entrega.setFont(new Font("", Font.BOLD, 12));
         indicador_fecha_entrega.setForeground(Color.blue);
+        indicador_fecha_entrega.setBackground(Color.white);
         indicador_fecha_entrega.setOpaque(true);
         indicador_fecha_entrega.setText("Fecha Entrega");
         indicador_fecha_entrega.setBounds(100, 340, 185, 20);
 
         indicador_empleado.setFont(new Font("", Font.BOLD, 12));
         indicador_empleado.setForeground(Color.blue);
+        indicador_empleado.setBackground(Color.white);
         indicador_empleado.setOpaque(true);
         indicador_empleado.setText("Empleado");
         indicador_empleado.setBounds(300, 340, 185, 20);
 
         indicador_estado.setFont(new Font("", Font.BOLD, 12));
         indicador_estado.setForeground(Color.blue);
+        indicador_estado.setBackground(Color.white);
         indicador_estado.setOpaque(true);
         indicador_estado.setText("Estado");
         indicador_estado.setBounds(220, 410, 185, 20);
@@ -135,16 +146,25 @@ public class mecanica_generalGUI {
         placas_array = vehiculo_cliente.getIDPlacas(identificacion);
         combobox_placa = new JComboBox(placas_array);
         combobox_placa.setBounds(250, 110, 185, 20);
+        combobox_placa.setBackground(Color.white);
         combobox_estado.setBounds(150, 390, 185, 20);
+        combobox_estado.setBackground(Color.white);
 
         //Buttons
         aceptar_registro_servicio.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_servicio.setText("Registrar");
+        aceptar_registro_servicio.setBackground(Color.white);
         aceptar_registro_servicio.setBounds(190, 440, 90, 20);
 
         actualizar_estados.setFont(new Font("", Font.BOLD, 12));
-        actualizar_estados.setText("Actualizar Estado");
-        actualizar_estados.setBounds(140, 470, 200, 20);
+        actualizar_estados.setText("Actualizar Estado / Borrar Registros");
+        actualizar_estados.setBackground(Color.white);
+        actualizar_estados.setBounds(100, 470, 270, 20);
+
+        frame.setLayout(null);
+        frame.setBounds(500, 200, 500, 550);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(registro_mecanica_general);
         frame.add(indicador_ID);
@@ -167,10 +187,8 @@ public class mecanica_generalGUI {
         frame.add(combobox_estado);
         frame.add(aceptar_registro_servicio);
         frame.add(actualizar_estados);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 550);
-        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);

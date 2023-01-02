@@ -14,6 +14,7 @@ public class actualizarEstadoGUI {
     private final JFrame frame = new JFrame("Actualizar Servicios");
 
     //Label
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel titulo_servicios_mg = new JLabel();
     static JLabel titulo_servicios_ep = new JLabel();
 
@@ -27,7 +28,9 @@ public class actualizarEstadoGUI {
 
     //Buttons
     public JButton actualizar_estado_mg = new JButton();
+    public JButton eliminar_registro_mg = new JButton();
     public JButton actualizar_estado_ep = new JButton();
+    public JButton eliminar_registro_ep = new JButton();
 
     //Servicios
     EnderezadoPintura enderezado_pintura = new EnderezadoPintura();
@@ -42,12 +45,14 @@ public class actualizarEstadoGUI {
         //Labels
         titulo_servicios_mg.setFont(new Font("", Font.PLAIN, 21));
         titulo_servicios_mg.setForeground(Color.blue);
+        titulo_servicios_mg.setBackground(Color.white);
         titulo_servicios_mg.setOpaque(true);
         titulo_servicios_mg.setText("Servicios Mecanica General");
         titulo_servicios_mg.setBounds(20, 20, 350, 25);
 
         titulo_servicios_ep.setFont(new Font("", Font.PLAIN, 21));
         titulo_servicios_ep.setForeground(Color.blue);
+        titulo_servicios_ep.setBackground(Color.white);
         titulo_servicios_ep.setOpaque(true);
         titulo_servicios_ep.setText("Servicios Enderezado / Pintura");
         titulo_servicios_ep.setBounds(20, 130, 350, 25);
@@ -60,15 +65,34 @@ public class actualizarEstadoGUI {
         combobox_servicios_ep = new JComboBox(servicios_ep_array);
 
         combobox_servicios_mg.setBounds(20, 60, 760, 20);
+        combobox_servicios_mg.setBackground(Color.white);
         combobox_servicios_ep.setBounds(20, 160, 760, 20);
+        combobox_servicios_ep.setBackground(Color.white);
         combobox_estados.setBounds(700, 0,85,20);
+        combobox_estados.setBackground(Color.white);
 
+        //Buttons
         actualizar_estado_mg.setFont(new Font("", Font.BOLD, 12));
         actualizar_estado_mg.setText("Actualizar Estado");
         actualizar_estado_mg.setBounds(20, 90, 170, 20);
+
+        eliminar_registro_mg.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_mg.setText("Eliminar Registro");
+        eliminar_registro_mg.setBounds(200, 90, 170, 20);
+
         actualizar_estado_ep.setFont(new Font("", Font.BOLD, 12));
         actualizar_estado_ep.setText("Actualizar Estado");
         actualizar_estado_ep.setBounds(20, 190, 170, 20);
+
+        eliminar_registro_ep.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_ep.setText("Eliminar Registro");
+        eliminar_registro_ep.setBounds(200, 190, 170, 20);
+
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 800, 300);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(titulo_servicios_mg);
         frame.add(titulo_servicios_ep);
@@ -77,10 +101,10 @@ public class actualizarEstadoGUI {
         frame.add(combobox_estados);
         frame.add(actualizar_estado_mg);
         frame.add(actualizar_estado_ep);
+        frame.add(eliminar_registro_mg);
+        frame.add(eliminar_registro_ep);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(100, 100, 800, 300);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
 
@@ -97,7 +121,7 @@ public class actualizarEstadoGUI {
                 String servicio_a_cambiar = String.valueOf(combobox_servicios_mg.getSelectedItem());
                 String estado = String.valueOf(combobox_estados.getSelectedItem());
                 try {
-                    mecanica_general.deleteEstado(posicion);
+                    mecanica_general.delete(posicion);
                     mecanica_general.setEstado(servicio_a_cambiar, estado);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
@@ -114,7 +138,7 @@ public class actualizarEstadoGUI {
                 String servicio_a_cambiar = String.valueOf(combobox_servicios_ep.getSelectedItem());
                 String estado = String.valueOf(combobox_estados.getSelectedItem());
                 try {
-                    enderezado_pintura.deleteEstado(posicion);
+                    enderezado_pintura.delete(posicion);
                     enderezado_pintura.setEstado(servicio_a_cambiar, estado);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
@@ -122,5 +146,31 @@ public class actualizarEstadoGUI {
             }
         });
 
+        eliminar_registro_mg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int posicion = combobox_servicios_mg.getSelectedIndex();
+                posicion++;
+
+                try {
+                    mecanica_general.delete(posicion);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        eliminar_registro_ep.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int posicion = combobox_servicios_ep.getSelectedIndex();
+                posicion++;
+                try {
+                    enderezado_pintura.delete(posicion);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 }

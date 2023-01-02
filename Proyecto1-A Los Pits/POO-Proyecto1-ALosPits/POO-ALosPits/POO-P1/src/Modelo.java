@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -51,10 +52,10 @@ public class Modelo {
             pw.println(marca + "," + tipo + "," + modelo + "," + asientos + "," + puertas + "," + combustible + "," + transmision);
             pw.flush();
             pw.close();
-            System.out.println(modelo + " Añadido");
+            JOptionPane.showMessageDialog(null, modelo + " añadido", "", 1);
         }
         else {
-            System.out.println(modelo + " NO añadido");
+            JOptionPane.showMessageDialog(null, modelo + " previamente añadido", "", 1);
         }
     }
 
@@ -110,10 +111,10 @@ public class Modelo {
             temp_file.delete();
 
             if (isdeleted == true){
-                System.out.println(modelo + " Eliminado");
+                JOptionPane.showMessageDialog(null, modelo + " eliminado", "", 1);
             }
             else{
-                System.out.println(modelo + " NO Eliminado");
+                JOptionPane.showMessageDialog(null, modelo + " previamente eliminado", "", 1);
             }
         }
         catch(Exception e) {e.printStackTrace();}
@@ -157,5 +158,18 @@ public class Modelo {
             }
         }catch(Exception e) {e.printStackTrace();}
         return csv_len;
+    }
+    public boolean verificaMarca(String marca, String tipo){
+        boolean verifica = false;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] filas = lineas_archivo.split(",");
+                if (filas[0].equals(marca) && filas[1].equals(tipo)){
+                    verifica = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return verifica;
     }
 }

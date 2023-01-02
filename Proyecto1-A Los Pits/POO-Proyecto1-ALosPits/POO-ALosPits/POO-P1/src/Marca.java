@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -46,10 +47,10 @@ public class Marca {
             pw.println(marca + "," + tipo);
             pw.flush();
             pw.close();
-            System.out.println(marca + "," + tipo + " Añadida");
+            JOptionPane.showMessageDialog(null, marca + "," + tipo + " Añadida", "", 1);
         }
         else {
-            System.out.println(marca + "," + tipo + " NO añadida");
+            JOptionPane.showMessageDialog(null, marca + "," + tipo + " previamente añadida", "", 1);
         }
     }
 
@@ -100,10 +101,10 @@ public class Marca {
             temp_file.delete();
 
             if (isdeleted == true){
-                System.out.println(marca + "," + tipo + " Eliminada");
+                JOptionPane.showMessageDialog(null, marca + "," + tipo + " Eliminada", "", 1);
             }
             else{
-                System.out.println(marca + "," + tipo + " NO Eliminada");
+                JOptionPane.showMessageDialog(null, marca + "," + tipo + " previamente eliminada", "", 1);
             }
         }
         catch(Exception e) {e.printStackTrace();}

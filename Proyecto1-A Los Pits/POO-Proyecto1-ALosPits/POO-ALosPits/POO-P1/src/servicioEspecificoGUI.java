@@ -11,6 +11,7 @@ public class servicioEspecificoGUI {
     private final JFrame frame = new JFrame("Servicios");
 
     //Labels
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     public JLabel datos_servicio = new JLabel();
     public JLabel datos_cliente = new JLabel();
     public JLabel datos_vehiculo = new JLabel();
@@ -20,7 +21,7 @@ public class servicioEspecificoGUI {
     public String[][] cliente_array;
     public String[][] vehiculo_array;
     public String[] columnas_servicio;
-    public String[] columnas_cliente = {"Cedula", "Nombre", "Tipo de Identificacion", "Provincia", "Canton", "Fecha de Nacimiento", "Correo"};
+    public String[] columnas_cliente = {"Cedula", "Nombre", "Tipo de Identificacion", "Provincia", "Canton", "Fecha de Nacimiento", "Teléfono", "Correo"};
     public String[] columnas_vehiculo = {"Cedula", "Marca", "Modelo", "Año", "Placa"};
     public JTable tabla_servicio;
     public JTable tabla_cliente;
@@ -51,18 +52,21 @@ public class servicioEspecificoGUI {
         //Labels
         datos_servicio.setFont(new Font("", Font.PLAIN, 21));
         datos_servicio.setForeground(Color.blue);
+        datos_servicio.setBackground(Color.white);
         datos_servicio.setOpaque(true);
         datos_servicio.setText("Datos del Servicio");
         datos_servicio.setBounds(20, 20, 400, 25);
 
         datos_cliente.setFont(new Font("", Font.PLAIN, 21));
         datos_cliente.setForeground(Color.blue);
+        datos_cliente.setBackground(Color.white);
         datos_cliente.setOpaque(true);
         datos_cliente.setText("Datos del Cliente");
         datos_cliente.setBounds(20, 100, 400, 25);
 
         datos_vehiculo.setFont(new Font("", Font.PLAIN, 21));
         datos_vehiculo.setForeground(Color.blue);
+        datos_vehiculo.setBackground(Color.white);
         datos_vehiculo.setOpaque(true);
         datos_vehiculo.setText("Datos del Vehiculo");
         datos_vehiculo.setBounds(20, 180, 400, 25);
@@ -84,15 +88,19 @@ public class servicioEspecificoGUI {
         scrollpane_vehiculo = new JScrollPane(tabla_vehiculo);
         scrollpane_vehiculo.setBounds(20, 210, 1700, 40);
 
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 1800, 300);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+
         frame.add(datos_servicio);
         frame.add(datos_cliente);
         frame.add(datos_vehiculo);
         frame.add(scrollpane_servicio);
         frame.add(scrollpane_cliente);
         frame.add(scrollpane_vehiculo);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(100, 100, 1800, 300);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);

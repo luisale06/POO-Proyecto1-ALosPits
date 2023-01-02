@@ -14,6 +14,9 @@ public class tipoconsultaGUI {
     //Label
     static JLabel titulo_servicios_generales = new JLabel();
     static JLabel titulo_servicios_especificos = new JLabel();
+
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
+
     //Combobox
     public String[] id_array;
     public String[] placa_array;
@@ -43,12 +46,14 @@ public class tipoconsultaGUI {
         //Labels
         titulo_servicios_generales.setFont(new Font("", Font.PLAIN, 21));
         titulo_servicios_generales.setForeground(Color.blue);
+        titulo_servicios_generales.setBackground(Color.white);
         titulo_servicios_generales.setOpaque(true);
         titulo_servicios_generales.setText("Consulta de Servicios Generales");
         titulo_servicios_generales.setBounds(20, 20, 350, 25);
 
         titulo_servicios_especificos.setFont(new Font("", Font.PLAIN, 21));
         titulo_servicios_especificos.setForeground(Color.blue);
+        titulo_servicios_especificos.setBackground(Color.white);
         titulo_servicios_especificos.setOpaque(true);
         titulo_servicios_especificos.setText("Consulta de Servicios Especificos");
         titulo_servicios_especificos.setBounds(20, 160, 350, 25);
@@ -65,28 +70,46 @@ public class tipoconsultaGUI {
         combobox_servicios_ep = new JComboBox(servicios_ep_array);
 
         combobox_id.setBounds(20, 50, 130, 20);
+        combobox_id.setBackground(Color.white);
         combobox_placa.setBounds(20, 80, 130, 20);
+        combobox_placa.setBackground(Color.white);
         combobox_servicios_mg.setBounds(20, 200, 760, 20);
+        combobox_servicios_mg.setBackground(Color.white);
         combobox_servicios_ep.setBounds(20, 300, 760, 20);
+        combobox_servicios_ep.setBackground(Color.white);
 
         //Buttons
         busqueda_id.setFont(new Font("", Font.BOLD, 12));
         busqueda_id.setText("Filtro por Cedula");
+        busqueda_id.setBackground(Color.white);
         busqueda_id.setBounds(155, 50, 150, 20);
+
         busqueda_placa.setFont(new Font("", Font.BOLD, 12));
         busqueda_placa.setText("Filtro por Placa");
+        busqueda_placa.setBackground(Color.white);
         busqueda_placa.setBounds(155, 80, 150, 20);
+
         busqueda_estado.setFont(new Font("", Font.BOLD, 12));
         busqueda_estado.setText("Busqueda por Estado");
+        busqueda_estado.setBackground(Color.white);
         busqueda_estado.setBounds(20, 110, 170, 20);
+
         busqueda_datos_mg.setFont(new Font("", Font.BOLD, 12));
         busqueda_datos_mg.setText("Busqueda de Servicio");
+        busqueda_datos_mg.setBackground(Color.white);
         busqueda_datos_mg.setBounds(20, 230, 170, 20);
+
         busqueda_datos_ep.setFont(new Font("", Font.BOLD, 12));
         busqueda_datos_ep.setText("Busqueda de Servicio");
+        busqueda_datos_ep.setBackground(Color.white);
         busqueda_datos_ep.setBounds(20, 330, 170, 20);
 
         //Frame
+        frame.setLayout(null);
+        frame.setBounds(100, 100, 800, 400);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+
         frame.add(titulo_servicios_generales);
         frame.add(titulo_servicios_especificos);
         frame.add(combobox_id);
@@ -98,9 +121,8 @@ public class tipoconsultaGUI {
         frame.add(busqueda_estado);
         frame.add(busqueda_datos_mg);
         frame.add(busqueda_datos_ep);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(100, 100, 800, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);

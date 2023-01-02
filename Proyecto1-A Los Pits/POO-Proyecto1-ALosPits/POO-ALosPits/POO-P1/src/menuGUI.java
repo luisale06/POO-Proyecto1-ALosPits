@@ -13,6 +13,7 @@ public class menuGUI {
     private JFrame frame = new JFrame("Menú Principal");
 
     //Labels
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel titulo = new JLabel();
     static JLabel nombre_taller = new JLabel();
 
@@ -31,12 +32,14 @@ public class menuGUI {
         //Labels
         titulo.setFont(new Font("", Font.PLAIN, 21));
         titulo.setForeground(Color.blue);
+        titulo.setBackground(Color.white);
         titulo.setOpaque(true);
         titulo.setText("Taller Mecánico y Pintura");
         titulo.setBounds(120, 20, 300, 25);
 
         nombre_taller.setFont(new Font("", Font.PLAIN, 21));
         nombre_taller.setForeground(Color.blue);
+        nombre_taller.setBackground(Color.white);
         nombre_taller.setOpaque(true);
         nombre_taller.setText("A los Pits");
         nombre_taller.setBounds(190, 50, 190, 25);
@@ -77,6 +80,9 @@ public class menuGUI {
         frame.setBounds(500, 200, 500, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+
         frame.add(titulo);
         frame.add(nombre_taller);
         frame.add(boton_registro_marca);
@@ -85,6 +91,8 @@ public class menuGUI {
         frame.add(boton_registro_vehiculo);
         frame.add(boton_registro_servicio);
         frame.add(boton_consulta_servicios);
+        frame.add(fondo);
+
         frame.setResizable(false);
         frame.setVisible(true);
 

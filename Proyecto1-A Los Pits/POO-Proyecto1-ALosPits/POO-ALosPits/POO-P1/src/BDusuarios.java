@@ -8,7 +8,6 @@ import java.io.*;
 public class BDusuarios {
     /**
      * Valida que la contraseña ingresada coincida con el nombre de usuario en el archivo csv correspondiente.
-     *
      * @param user     el usuario
      * @param password la contraseña
      * @return valar booleano

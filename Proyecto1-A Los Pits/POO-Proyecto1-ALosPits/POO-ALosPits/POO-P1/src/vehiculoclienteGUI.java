@@ -13,6 +13,7 @@ public class vehiculoclienteGUI {
     private final JFrame frame = new JFrame("Registro de Vehiculos");
 
     //Label
+    static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
     static JLabel registro_vehiculos = new JLabel();
     static JLabel indicador_id = new JLabel();
     static JLabel indicador_marca_modelo = new JLabel();
@@ -21,6 +22,7 @@ public class vehiculoclienteGUI {
 
     //Button
     public JButton aceptar_registro_vehiculo = new JButton();
+    public JButton eliminar_registro_vehiculo = new JButton();
 
     //Textfield
     public JTextField entrada_year = new JTextField();
@@ -33,6 +35,8 @@ public class vehiculoclienteGUI {
     vehiculoCliente vehiculocliente = new vehiculoCliente();
     Modelo modelo = new Modelo();
     Cliente cliente = new Cliente();
+    EnderezadoPintura enderezadoPintura = new EnderezadoPintura();
+    MecanicaGeneral mecanicaGeneral = new MecanicaGeneral();
 
     /**
      * Metodo constructor donde se editan los objetos de la ventana
@@ -41,30 +45,35 @@ public class vehiculoclienteGUI {
         //Labels
         registro_vehiculos.setFont(new Font("", Font.PLAIN, 21));
         registro_vehiculos.setForeground(Color.blue);
+        registro_vehiculos.setBackground(Color.white);
         registro_vehiculos.setOpaque(true);
         registro_vehiculos.setText("Registro de Vehiculos");
         registro_vehiculos.setBounds(140, 20, 210, 25);
 
         indicador_id.setFont(new Font("", Font.BOLD, 12));
         indicador_id.setForeground(Color.blue);
+        indicador_id.setBackground(Color.white);
         indicador_id.setOpaque(true);
         indicador_id.setText("Identificacion");
         indicador_id.setBounds(90, 130, 185, 20);
 
         indicador_marca_modelo.setFont(new Font("", Font.BOLD, 12));
         indicador_marca_modelo.setForeground(Color.blue);
+        indicador_marca_modelo.setBackground(Color.white);
         indicador_marca_modelo.setOpaque(true);
         indicador_marca_modelo.setText("Marca y Modelo");
         indicador_marca_modelo.setBounds(300, 130, 185, 20);
 
         indicador_year.setFont(new Font("", Font.BOLD, 12));
         indicador_year.setForeground(Color.blue);
+        indicador_year.setBackground(Color.white);
         indicador_year.setOpaque(true);
         indicador_year.setText("Año");
         indicador_year.setBounds(110, 200, 185, 20);
 
         indicador_placa.setFont(new Font("", Font.BOLD, 12));
         indicador_placa.setForeground(Color.blue);
+        indicador_placa.setBackground(Color.white);
         indicador_placa.setOpaque(true);
         indicador_placa.setText("Placa");
         indicador_placa.setBounds(330, 200, 185, 20);
@@ -75,7 +84,9 @@ public class vehiculoclienteGUI {
         combobox_id = new JComboBox(id_array);
         combobox_marca_modelo = new JComboBox(marca_modelo_array);
         combobox_id.setBounds(40, 110, 185, 20);
+        combobox_id.setBackground(Color.white);
         combobox_marca_modelo.setBounds(250, 110, 185, 20);
+        combobox_marca_modelo.setBackground(Color.white);
 
         entrada_year.setFont(new Font("", Font.BOLD, 12));
         entrada_year.setBounds(40, 180, 185, 20);
@@ -85,7 +96,18 @@ public class vehiculoclienteGUI {
         //Buttons
         aceptar_registro_vehiculo.setFont(new Font("", Font.BOLD, 12));
         aceptar_registro_vehiculo.setText("Registrar");
+        aceptar_registro_vehiculo.setBackground(Color.white);
         aceptar_registro_vehiculo.setBounds(190, 235, 90, 20);
+
+        eliminar_registro_vehiculo.setFont(new Font("", Font.BOLD, 12));
+        eliminar_registro_vehiculo.setText("Eliminar");
+        eliminar_registro_vehiculo.setBackground(Color.white);
+        eliminar_registro_vehiculo.setBounds(190, 260, 90, 20);
+
+        frame.setLayout(null);
+        frame.setBounds(500, 200, 500, 350);
+
+        fondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
         frame.add(registro_vehiculos);
         frame.add(indicador_id);
@@ -97,10 +119,9 @@ public class vehiculoclienteGUI {
         frame.add(entrada_year);
         frame.add(entrada_placa);
         frame.add(aceptar_registro_vehiculo);
+        frame.add(eliminar_registro_vehiculo);
+        frame.add(fondo);
 
-        frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 300);
-        frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -122,6 +143,24 @@ public class vehiculoclienteGUI {
 
                 try {
                     vehiculocliente.add(id_registro, marca_registro, modelo_registro, year_registro, placa_registro);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        eliminar_registro_vehiculo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String placa = entrada_placa.getText();
+
+                try{
+                    if (enderezadoPintura.verificaPlaca(placa) || mecanicaGeneral.verificaPlaca(placa)){
+                        JOptionPane.showMessageDialog(null, "Existen servicios asociados a este vehículo", "No se pudo eliminar", 1);
+                    }
+                    else{
+                        vehiculocliente.delete(placa);
+                    }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

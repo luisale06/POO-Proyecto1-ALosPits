@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -7,6 +8,8 @@ import java.io.*;
  */
 public class vehiculoCliente {
     File file = new File("vehiculoclientes.csv");
+
+    File temp_file = new File("temp.csv");
     String lineas_archivo;
     FileWriter fw;
     BufferedWriter bw;
@@ -30,7 +33,7 @@ public class vehiculoCliente {
 
             while ((lineas_archivo = lector.readLine()) != null){
                 String[] fila = lineas_archivo.split(",");
-                if (fila[0].equals(id) && fila[1].equals(marca) && fila[2].equals(modelo) && fila[3].equals(year) && fila[4].equals(placa)) {
+                if (fila[4].equals(placa)) {
                     ismarca = false;
                     break;
                 }
@@ -46,11 +49,66 @@ public class vehiculoCliente {
             pw.println(id + "," + marca + "," + modelo + "," + year + "," + placa);
             pw.flush();
             pw.close();
-            System.out.println(marca + "," + modelo + " de " + id + " Añadido");
+            JOptionPane.showMessageDialog(null,  marca + "," + modelo + " de " + id + " añadido", "", 1);
         }
         else {
-            System.out.println(marca + "," + modelo + " de " + id + " No Añadido");
+            JOptionPane.showMessageDialog(null,  marca + "," + modelo + " de " + id + " previamente añadido", "", 1);
         }
+    }
+
+    /**
+     * Método que elimina el registro de un vehículo por medio de su placa
+     * @param placa placa del vehículo
+     * @throws IOException
+     */
+    public void delete(String placa) throws IOException {
+        try{
+            fw = new FileWriter(temp_file, true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+            boolean isdeleted = false;
+
+            lector = new BufferedReader(new FileReader(file));
+            while ((lineas_archivo = lector.readLine()) != null){
+                String[] columnas = lineas_archivo.split(",");
+                if (!columnas[4].equals(placa)) {
+                    pw.println(lineas_archivo);
+                }
+                else {
+                    isdeleted = true;
+                }
+            }
+
+            pw.flush();
+            pw.close();
+
+            FileInputStream in = new FileInputStream(temp_file);
+            FileOutputStream out = new FileOutputStream(file);
+            try{
+                int n;
+
+                while ((n = in.read()) != -1){
+                    out.write(n);
+                }
+            }finally{
+                if (in != null){
+                    in.close();
+                }
+                if (out != null){
+                    out.close();
+                }
+            }
+            temp_file.delete();
+
+            if (isdeleted == true){
+                JOptionPane.showMessageDialog(null, "Vehículo de placa: " + placa + " eliminado", "", 1);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Vehículo de placa: " + placa + " previamente eliminado", "", 1);
+            }
+        }
+        catch(Exception e) {e.printStackTrace();}
+        finally {lector.close();}
     }
 
     /**
@@ -154,5 +212,33 @@ public class vehiculoCliente {
             }
         }catch(Exception e) {e.printStackTrace();}
         return info_vehiculo;
+    }
+
+    public boolean verificaModelo(String marca, String modelo){
+        boolean verifica = false;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] filas = lineas_archivo.split(",");
+                if (filas[1].equals(marca) && filas[2].equals(modelo)){
+                    verifica = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return verifica;
+    }
+
+    public boolean verificaCliente(String id){
+        boolean verifica = false;
+        try{
+            lector = new BufferedReader(new FileReader(file));
+            while((lineas_archivo = lector.readLine()) != null){
+                String[] filas = lineas_archivo.split(",");
+                if (filas[0].equals(id)){
+                    verifica = true;
+                }
+            }
+        }catch(Exception e) {e.printStackTrace();}
+        return verifica;
     }
 }
