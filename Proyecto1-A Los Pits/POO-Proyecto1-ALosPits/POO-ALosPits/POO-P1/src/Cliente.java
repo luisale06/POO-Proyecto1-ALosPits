@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 
 /**
  * Clase donde se lleva el registro de clientes del taller

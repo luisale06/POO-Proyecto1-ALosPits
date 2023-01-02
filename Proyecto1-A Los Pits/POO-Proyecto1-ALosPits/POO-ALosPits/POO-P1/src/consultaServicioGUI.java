@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 /**
