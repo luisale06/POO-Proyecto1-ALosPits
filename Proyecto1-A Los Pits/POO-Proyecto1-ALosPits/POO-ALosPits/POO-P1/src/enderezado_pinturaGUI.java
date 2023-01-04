@@ -10,7 +10,7 @@ import java.io.IOException;
  * @see enderezado_pinturaGUI
  */
 public class enderezado_pinturaGUI {
-    private final JFrame frame = new JFrame("Mecanica General");
+    private final JFrame frame = new JFrame("Enderezado / Pintura");
 
     //Label
     static JLabel fondo = new JLabel(new ImageIcon("fondo.jpg"));
@@ -149,18 +149,25 @@ public class enderezado_pinturaGUI {
         entrada_ID.setEditable(false);
         entrada_ID.setFont(new Font("", Font.BOLD, 12));
         entrada_ID.setBounds(40, 110, 185, 20);
+
         entrada_descripcion_vehiculo.setFont(new Font("", Font.BOLD, 12));
         entrada_descripcion_vehiculo.setBounds(40, 180, 185, 20);
+
         entrada_partes_enderezar.setFont(new Font("", Font.BOLD, 12));
         entrada_partes_enderezar.setBounds(250, 180, 185, 20);
+
         entrada_costo.setFont(new Font("", Font.BOLD, 12));
         entrada_costo.setBounds(40, 250, 185, 20);
+
         entrada_fecha_recibido.setFont(new Font("", Font.BOLD, 12));
         entrada_fecha_recibido.setBounds(250, 250, 185, 20);
+
         entrada_fecha_entrega.setFont(new Font("", Font.BOLD, 12));
         entrada_fecha_entrega.setBounds(40, 320, 185, 20);
+
         entrada_empleado.setFont(new Font("", Font.BOLD, 12));
         entrada_empleado.setBounds(250, 320, 185, 20);
+
         entrada_caso.setText(String.valueOf(servicio.getCasos()));
         entrada_caso.setEditable(false);
         entrada_caso.setFont(new Font("", Font.BOLD, 12));
