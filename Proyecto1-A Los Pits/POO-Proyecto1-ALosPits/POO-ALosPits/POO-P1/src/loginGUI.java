@@ -25,7 +25,7 @@ public class loginGUI{
 
     //TextFields
     public JTextField entrada_username = new JTextField();
-    public JTextField entrada_password = new JTextField();
+    public JPasswordField entrada_password = new JPasswordField();
 
     //Control CSVs
     Empleado empleado = new Empleado();
@@ -41,42 +41,42 @@ public class loginGUI{
         inicio_sesion.setBackground(Color.white);
         inicio_sesion.setOpaque(true);
         inicio_sesion.setText("Inicio de Sesion");
-        inicio_sesion.setBounds(140, 20, 190, 25);
+        inicio_sesion.setBounds(50, 20, 190, 25);
 
         indicador_username.setFont(new Font("", Font.PLAIN, 12));
         indicador_username.setForeground(Color.blue);
         indicador_username.setBackground(Color.white);
         indicador_username.setOpaque(true);
         indicador_username.setText("Username");
-        indicador_username.setBounds(275, 50, 40, 20);
+        indicador_username.setBounds(185, 50, 70, 20);
 
         indicador_password.setFont(new Font("", Font.PLAIN, 12));
         indicador_password.setForeground(Color.blue);
         indicador_password.setBackground(Color.white);
         indicador_password.setOpaque(true);
         indicador_password.setText("Password");
-        indicador_password.setBounds(275, 80, 40, 20);
+        indicador_password.setBounds(185, 80, 70, 20);
 
         //Combobox
         entrada_username.setFont(new Font("", Font.BOLD, 12));
-        entrada_username.setBounds(140, 50, 130, 20);
+        entrada_username.setBounds(50, 50, 130, 20);
 
         entrada_password.setFont(new Font("", Font.BOLD, 12));
-        entrada_password.setBounds(140, 80, 130, 20);
+        entrada_password.setBounds(50, 80, 130, 20);
 
         //Buttons
         iniciar_sesion.setFont(new Font("", Font.BOLD, 12));
         iniciar_sesion.setText("Iniciar Sesion");
         iniciar_sesion.setBackground(Color.white);
-        iniciar_sesion.setBounds(140, 110, 90, 20);
+        iniciar_sesion.setBounds(50, 110, 130, 20);
 
         crear_cuenta.setFont(new Font("", Font.BOLD, 12));
         crear_cuenta.setText("Crear Cuenta");
         crear_cuenta.setBackground(Color.white);
-        crear_cuenta.setBounds(230, 110, 90, 20);
+        crear_cuenta.setBounds(50, 135, 130, 20);
 
         frame.setLayout(null);
-        frame.setBounds(500, 200, 500, 200);
+        frame.setBounds(500, 200, 300, 200);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -107,6 +107,12 @@ public class loginGUI{
 
                 if(login){
                     menuGUI ventana_menu = new menuGUI();
+                    frame.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña incorrectos", "Inicio fallido", 1);
+                    entrada_username.setText("");
+                    entrada_password.setText("");
                 }
             }
         });
